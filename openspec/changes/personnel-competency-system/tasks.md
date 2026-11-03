@@ -14,11 +14,11 @@
 
 - [x] 2.1 Implement EvaluationStatus enum (RASCUNHO, CONCLUÍDA, ACEITA, CONTESTADA) and verify unit test covers all states and transitions
 - [x] 2.2 Implement RequirementWeight enum (CORE, IMPORTANT, DESIRABLE) and verify unit test covers ordering and comparison
-- [ ] 2.3 Implement CollaboratorId value object with validation and verify unit test covers creation and equality
-- [ ] 2.4 Implement EvaluationId value object with validation and verify unit test covers creation and equality
-- [ ] 2.5 Implement CompetencyId value object with validation and verify unit test covers creation and equality
-- [ ] 2.6 Implement PathId value object with validation and verify unit test covers creation and equality
-- [ ] 2.7 Add docstrings to all value objects/enums and verify Pyrefly type check passes
+- [x] 2.3 Implement CollaboratorId value object with validation and verify unit test covers creation and equality
+- [x] 2.4 Implement EvaluationId value object with validation and verify unit test covers creation and equality
+- [x] 2.5 Implement CompetencyId value object with validation and verify unit test covers creation and equality
+- [x] 2.6 Implement PathId value object with validation and verify unit test covers creation and equality
+- [x] 2.7 Add docstrings to all value objects/enums and verify Pyrefly type check passes
 
 ## 3. Domain Layer - Competency Catalog Aggregate
 
