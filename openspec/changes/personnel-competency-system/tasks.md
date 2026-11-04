@@ -40,13 +40,13 @@
 
 ## 5. Domain Layer - Collaborator Aggregate
 
-- [ ] 5.1 Implement PathEnrollment value object (pathId, isActive, targetLevel, enrolledAt) and verify unit test covers creation
-- [ ] 5.2 Implement Collaborator aggregate root with enrollments list and verify unit test covers enrollment addition
-- [ ] 5.3 Add business rule enforcing single active path with set_active_path method and verify unit test covers automatic deactivation
-- [ ] 5.4 Add validation preventing duplicate path enrollments and verify unit test covers rejection
-- [ ] 5.5 Implement update_target_level method with validation and verify unit test covers level existence check
-- [ ] 5.6 Implement CollaboratorRepository protocol with save, get_by_id, find_by_path methods and verify protocol structure
-- [ ] 5.7 Document Collaborator aggregate with docstrings covering single active path invariant
+- [x] 5.1 Implement PathEnrollment value object (pathId, isActive, targetLevel, enrolledAt) and verify unit test covers creation
+- [x] 5.2 Implement Collaborator aggregate root with enrollments list and verify unit test covers enrollment addition
+- [x] 5.3 Add business rule enforcing single active path with set_active_path method and verify unit test covers automatic deactivation
+- [x] 5.4 Add validation preventing duplicate path enrollments and verify unit test covers rejection
+- [x] 5.5 Implement update_target_level method with validation and verify unit test covers level existence check
+- [x] 5.6 Implement CollaboratorRepository protocol with save, get_by_id, find_by_path methods and verify protocol structure
+- [x] 5.7 Document Collaborator aggregate with docstrings covering single active path invariant
 
 ## 6. Domain Layer - Evaluation Aggregate
 
