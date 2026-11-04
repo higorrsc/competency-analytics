@@ -1,7 +1,5 @@
 """Unit tests for EvaluationStatus enum."""
 
-import pytest
-
 from src.domain.value_objects.evaluation_status import EvaluationStatus
 
 

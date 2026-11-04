@@ -14,7 +14,7 @@ class TestCollaboratorId:
         """Verify generate creates unique CollaboratorId instances."""
         id1 = CollaboratorId.generate()
         id2 = CollaboratorId.generate()
-        
+
         assert id1 != id2
         assert isinstance(id1.value, UUID)
         assert isinstance(id2.value, UUID)
@@ -23,7 +23,7 @@ class TestCollaboratorId:
         """Verify from_string creates CollaboratorId from valid UUID string."""
         uuid_string = "123e4567-e89b-12d3-a456-426614174000"
         collaborator_id = CollaboratorId.from_string(uuid_string)
-        
+
         assert str(collaborator_id.value) == uuid_string
         assert isinstance(collaborator_id, CollaboratorId)
 
@@ -37,7 +37,7 @@ class TestCollaboratorId:
         uuid_value = UUID("123e4567-e89b-12d3-a456-426614174000")
         id1 = CollaboratorId(uuid_value)
         id2 = CollaboratorId(uuid_value)
-        
+
         assert id1 == id2
         assert hash(id1) == hash(id2)
 
@@ -45,13 +45,13 @@ class TestCollaboratorId:
         """Verify two CollaboratorIds with different UUIDs are not equal."""
         id1 = CollaboratorId.generate()
         id2 = CollaboratorId.generate()
-        
+
         assert id1 != id2
 
     def test_immutability(self) -> None:
         """Verify CollaboratorId is immutable (frozen dataclass)."""
         collaborator_id = CollaboratorId.generate()
-        
+
         with pytest.raises(AttributeError):
             collaborator_id.value = UUID("123e4567-e89b-12d3-a456-426614174000")  # type: ignore
 
@@ -59,12 +59,12 @@ class TestCollaboratorId:
         """Verify __str__ returns string representation of UUID."""
         uuid_string = "123e4567-e89b-12d3-a456-426614174000"
         collaborator_id = CollaboratorId.from_string(uuid_string)
-        
+
         assert str(collaborator_id) == uuid_string
 
     def test_repr_representation(self) -> None:
         """Verify __repr__ returns developer-friendly representation."""
         uuid_value = UUID("123e4567-e89b-12d3-a456-426614174000")
         collaborator_id = CollaboratorId(uuid_value)
-        
+
         assert repr(collaborator_id) == f"CollaboratorId({uuid_value})"
