@@ -22,11 +22,11 @@
 
 ## 3. Domain Layer - Competency Catalog Aggregate
 
-- [ ] 3.1 Implement Competency entity with hierarchy (categoryId, groupId), level descriptions (dict[int, str]), and verify unit test covers creation
-- [ ] 3.2 Add validation to Competency requiring all 5 level descriptions and verify test covers missing levels rejection
-- [ ] 3.3 Implement CompetencyRepository protocol with save, get_by_id, find_by_hierarchy methods and verify protocol structure with Pyrefly
-- [ ] 3.4 Add domain exception CompetencyReferencedError for deletion prevention and verify unit test covers exception creation
-- [ ] 3.5 Document Competency aggregate in domain/entities/competency.py with comprehensive docstrings
+- [x] 3.1 Implement Competency entity with hierarchy (categoryId, groupId), level descriptions (dict[int, str]), and verify unit test covers creation
+- [x] 3.2 Add validation to Competency requiring all 5 level descriptions and verify test covers missing levels rejection
+- [x] 3.3 Implement CompetencyRepository protocol with save, get_by_id, find_by_hierarchy methods and verify protocol structure with Pyrefly
+- [x] 3.4 Add domain exception CompetencyReferencedError for deletion prevention and verify unit test covers exception creation
+- [x] 3.5 Document Competency aggregate in domain/entities/competency.py with comprehensive docstrings
 
 ## 4. Domain Layer - CompetencyPath Aggregate
 
