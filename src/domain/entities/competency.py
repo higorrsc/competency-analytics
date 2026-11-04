@@ -7,9 +7,7 @@ from src.domain.exceptions.competency_errors import CompetencyValidationError
 from src.domain.value_objects.category_id import CategoryId
 from src.domain.value_objects.competency_id import CompetencyId
 from src.domain.value_objects.group_id import GroupId
-
-#: Valid proficiency levels supported by the catalog (1 = lowest, 5 = highest).
-VALID_LEVELS: frozenset[int] = frozenset({1, 2, 3, 4, 5})
+from src.domain.value_objects.proficiency_level import VALID_LEVELS, is_valid_level
 
 
 @dataclass(eq=False)
@@ -123,7 +121,7 @@ class Competency:
         Raises:
             CompetencyValidationError: If the level is outside 1-5.
         """
-        if level not in VALID_LEVELS:
+        if not is_valid_level(level):
             raise CompetencyValidationError(
                 f"Invalid proficiency level {level}; expected one of {sorted(VALID_LEVELS)}"
             )
