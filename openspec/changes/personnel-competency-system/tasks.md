@@ -50,16 +50,16 @@
 
 ## 6. Domain Layer - Evaluation Aggregate
 
-- [ ] 6.1 Implement CompetencyMeasurement entity (measurementId, competencyId, currentLevel, notes, evidence) and verify unit test covers creation and level validation
-- [ ] 6.2 Implement Evaluation aggregate root with measurements list, status, dates and verify unit test covers creation in RASCUNHO state
-- [ ] 6.3 Add add_measurement method enforcing draft-only modification and verify unit test covers immutability after completion
-- [ ] 6.4 Add submit method transitioning RASCUNHO → CONCLUÍDA with validation and verify unit test covers empty measurements rejection
-- [ ] 6.5 Add accept method transitioning CONCLUÍDA → ACEITA with response notes and verify unit test covers status validation
-- [ ] 6.6 Add contest method transitioning CONCLUÍDA → CONTESTADA requiring notes and verify unit test covers missing notes rejection
-- [ ] 6.7 Add business rule preventing any modification when status is ACEITA/CONTESTADA and verify unit test covers all modification attempts blocked
-- [ ] 6.8 Implement EvaluationRepository protocol with save, get_by_id, find_latest_finalized_for_collaborator methods and verify protocol structure
-- [ ] 6.9 Add domain exceptions (EvaluationImmutableError, InvalidStatusTransitionError) and verify unit tests cover creation
-- [ ] 6.10 Document Evaluation aggregate with comprehensive docstrings covering lifecycle and immutability
+- [x] 6.1 Implement CompetencyMeasurement entity (measurementId, competencyId, currentLevel, notes, evidence) and verify unit test covers creation and level validation
+- [x] 6.2 Implement Evaluation aggregate root with measurements list, status, dates and verify unit test covers creation in RASCUNHO state
+- [x] 6.3 Add add_measurement method enforcing draft-only modification and verify unit test covers immutability after completion
+- [x] 6.4 Add submit method transitioning RASCUNHO → CONCLUÍDA with validation and verify unit test covers empty measurements rejection
+- [x] 6.5 Add accept method transitioning CONCLUÍDA → ACEITA with response notes and verify unit test covers status validation
+- [x] 6.6 Add contest method transitioning CONCLUÍDA → CONTESTADA requiring notes and verify unit test covers missing notes rejection
+- [x] 6.7 Add business rule preventing any modification when status is ACEITA/CONTESTADA and verify unit test covers all modification attempts blocked
+- [x] 6.8 Implement EvaluationRepository protocol with save, get_by_id, find_latest_finalized_for_collaborator methods and verify protocol structure
+- [x] 6.9 Add domain exceptions (EvaluationImmutableError, InvalidStatusTransitionError) and verify unit tests cover creation
+- [x] 6.10 Document Evaluation aggregate with comprehensive docstrings covering lifecycle and immutability
 
 ## 7. Domain Layer - Gap Analysis Domain Service
 
