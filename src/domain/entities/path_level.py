@@ -27,9 +27,7 @@ class PathLevel:
     id: LevelId
     name: str
     order: int
-    requirements: list[CompetencyRequirement] = field(
-        default_factory=list[CompetencyRequirement]
-    )
+    requirements: list[CompetencyRequirement] = field(default_factory=list[CompetencyRequirement])
 
     def __post_init__(self) -> None:
         """Validate level invariants immediately after construction."""
