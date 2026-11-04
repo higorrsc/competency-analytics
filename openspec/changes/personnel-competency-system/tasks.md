@@ -30,13 +30,13 @@
 
 ## 4. Domain Layer - CompetencyPath Aggregate
 
-- [ ] 4.1 Implement CompetencyRequirement value object (competencyId, minimumLevel, weight) and verify unit test covers creation and validation
-- [ ] 4.2 Implement PathLevel entity (levelId, name, order, requirements list) and verify unit test covers requirement management
-- [ ] 4.3 Implement CompetencyPath aggregate root with levels list and verify unit test covers level ordering validation
-- [ ] 4.4 Add business rule to PathLevel preventing duplicate competency requirements and verify unit test covers rejection
-- [ ] 4.5 Add business rule to CompetencyPath enforcing sequential level ordering and verify unit test covers non-sequential rejection
-- [ ] 4.6 Implement PathRepository protocol with save, get_by_id, find_all methods and verify protocol structure
-- [ ] 4.7 Document CompetencyPath aggregate with docstrings covering business rules
+- [x] 4.1 Implement CompetencyRequirement value object (competencyId, minimumLevel, weight) and verify unit test covers creation and validation
+- [x] 4.2 Implement PathLevel entity (levelId, name, order, requirements list) and verify unit test covers requirement management
+- [x] 4.3 Implement CompetencyPath aggregate root with levels list and verify unit test covers level ordering validation
+- [x] 4.4 Add business rule to PathLevel preventing duplicate competency requirements and verify unit test covers rejection
+- [x] 4.5 Add business rule to CompetencyPath enforcing sequential level ordering and verify unit test covers non-sequential rejection
+- [x] 4.6 Implement PathRepository protocol with save, get_by_id, find_all methods and verify protocol structure
+- [x] 4.7 Document CompetencyPath aggregate with docstrings covering business rules
 
 ## 5. Domain Layer - Collaborator Aggregate
 
