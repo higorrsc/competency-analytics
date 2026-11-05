@@ -8,17 +8,17 @@ from src.application.dto.evaluation_dtos import (
     EvaluationCreateDTO,
     MeasurementCreateDTO,
 )
+from src.application.use_cases.errors import (
+    ConflictError,
+    NotFoundError,
+    ValidationError,
+)
 from src.application.use_cases.evaluation_use_cases import (
     AcceptEvaluationUseCase,
     AddMeasurementToEvaluationUseCase,
     ContestEvaluationUseCase,
     CreateEvaluationUseCase,
     SubmitEvaluationUseCase,
-)
-from src.application.use_cases.errors import (
-    ConflictError,
-    NotFoundError,
-    ValidationError,
 )
 from src.domain.entities.collaborator import Collaborator
 from src.domain.entities.competency import Competency
