@@ -182,7 +182,7 @@
 - [x] 17.3 Create development guide explaining how to run tests, linting, type checking
 - [x] 17.4 Document API endpoints with example requests/responses
 - [x] 17.5 Create architecture documentation explaining Clean Architecture layers and boundaries
-- [ ] 17.6 Add docstrings validation to CI checks and verify all public APIs documented
+- [x] 17.6 Add docstrings validation to CI checks and verify all public APIs documented
 - [ ] 17.7 Run complete test suite and verify >85% coverage achieved
 - [ ] 17.8 Run `uv run ruff format .` and verify code formatted
 - [ ] 17.9 Run `uv run ruff check .` and verify no linting errors

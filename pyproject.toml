@@ -103,11 +103,16 @@ line-ending = "auto"
 # SIM: simplify
 # ASYNC: async-specific checks
 # RUF: Ruff-specific rules
-select = ["E", "F", "I", "W", "B", "UP", "N", "SIM", "ASYNC", "RUF"]
+# D101, D102, D103: docstrings for public classes, methods, functions
+select = [
+  "E", "F", "I", "W", "B", "UP", "N", "SIM", "ASYNC", "RUF",
+  "D101", "D102", "D103"
+]
 ignore = []
 
 [tool.ruff.lint.per-file-ignores]
-"**/migrations/*" = ["RUF012"]
+"**/migrations/*" = ["RUF012", "D101"]
+"tests/**" = ["D101", "D102", "D103"]
 
 [tool.ruff.lint.pycodestyle]
 max-line-length = 88

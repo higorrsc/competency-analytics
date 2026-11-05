@@ -1,6 +1,6 @@
 # Personnel Competency Analysis System
 
-[![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/python-3.15-blue.svg)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/django-6.1.3-green.svg)](https://www.djangoproject.com/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Architecture](https://img.shields.io/badge/architecture-Clean%20%2B%20DDD-orange.svg)]()
@@ -127,7 +127,7 @@ Collaborator
 
 ## Tech Stack
 
-- **Language**: Python 3.12+ (managed with `uv`)
+- **Language**: Python 3.15 (managed with `uv`)
 - **Web Framework**: Django 6.1.3
 - **API Engine**: Django REST Framework (DRF)
 - **API Documentation**: OpenAPI 3.0 via `drf-spectacular` (Swagger UI & ReDoc)
@@ -188,7 +188,7 @@ tests/
 ### Prerequisites
 
 - [uv](https://docs.astral.sh/uv/) (recommended fast Python package manager)
-- Python 3.12 or newer
+- Python 3.15
 - Docker & Docker Compose (optional, for running PostgreSQL)
 
 ### Local Installation
