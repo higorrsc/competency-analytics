@@ -1,4 +1,5 @@
 """Django settings configuration using pydantic-settings."""
+
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
