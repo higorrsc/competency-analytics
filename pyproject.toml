@@ -9,56 +9,136 @@ description = "Personnel Competency Analysis System with Clean Architecture"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "django>=5.1",
-    "djangorestframework>=3.14",
-    "psycopg[binary]>=3.1",
-    "pydantic>=2.5",
-    "pydantic-settings>=2.1",
+  "django>=5.1",
+  "djangorestframework>=3.14",
+  "psycopg[binary]>=3.1",
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+]
+
+[dependency-groups]
+dev = [
+  "django-stubs>=6.1.2",
+  "factory-boy>=3.3",
+  "ipykernel>=7.4.0",
+  "ipython>=9.18.1",
+  "pyrefly>=1.4.1",
+  "pyright>=1.1",
+  "pytest-cov>=4.1",
+  "pytest-django>=4.7",
+  "pytest>=7.4",
+  "ruff>=0.1",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.4",
-    "pytest-django>=4.7",
-    "pytest-cov>=4.1",
-    "ruff>=0.1",
-    "pyright>=1.1",
-    "factory-boy>=3.3",
-]
+# ------------------------------------------------------
+# PyRefly
+# ------------------------------------------------------
+
+[tool.pyrefly]
+python-version = "3.15"
+project-includes = ["src", "tests"]
+search-path = ["."]
+check-unannotated-defs = true
+infer-return-types = "never"
+
+[tool.pyrefly.errors]
+implicit-any-parameter = "error"
+no-any-return = "error"
+implicit-any = "error"
+unannotated-return = "error"
+incompatible-comparison = "error"
+unnecessary-comparison = "error"
+
+# ------------------------------------------------------
+# Mypy
+# ------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.15"
+# Type checking
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+strict_equality = true
+warn_return_any = true
+# Imports / packages
+explicit_package_bases = true
+ignore_missing_imports = true
+namespace_packages = true
+# Warnings
+warn_unused_configs = true
+# Exclusions
+exclude = ["migrations/versions"]
+
+# ------------------------------------------------------
+# Ruff
+# ------------------------------------------------------
 
 [tool.ruff]
-line-length = 100
-target-version = "py312"
+line-length = 88
+target-version = "py315"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
 
 [tool.ruff.lint]
-select = [
-    "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # pyflakes
-    "I",   # isort
-    "B",   # flake8-bugbear
-    "C4",  # flake8-comprehensions
-    "UP",  # pyupgrade
-]
+# E: pycodestyle errors
+# F: Pyflakes
+# I: import sort
+# W: warnings
+# B: bugbear
+# UP: pyupgrade
+# N: naming
+# SIM: simplify
+# ASYNC: async-specific checks
+# RUF: Ruff-specific rules
+select = ["E", "F", "I", "W", "B", "UP", "N", "SIM", "ASYNC", "RUF"]
 ignore = []
 
-[tool.ruff.lint.isort]
-known-first-party = ["src"]
+[tool.ruff.lint.pycodestyle]
+max-line-length = 88
+
+# ------------------------------------------------------
+# Pytest
+# ------------------------------------------------------
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "src.infrastructure.django_app.settings"
+DJANGO_SETTINGS_MODULE = "src.infrastructure.config.settings"
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 testpaths = ["tests"]
-addopts = "--strict-markers --tb=short"
+addopts = "--strict-markers --tb=short --reuse-db"
+
+# ------------------------------------------------------
+# Coverage
+# ------------------------------------------------------
+
+[tool.coverage.run]
+omit = ["*/__init__.py", "tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "if self.debug:",
+  "raise NotImplementedError",
+  "if TYPE_CHECKING:",
+  "class .*\\bProtocol\\):",
+  "@(abc\\.)?abstractmethod",
+]
+
 
 [tool.pyright]
 include = ["src"]
 exclude = ["**/migrations", "**/tests"]
-pythonVersion = "3.12"
+pythonVersion = "3.15"
 typeCheckingMode = "strict"
 reportMissingTypeStubs = false

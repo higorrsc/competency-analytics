@@ -26,6 +26,7 @@ class Settings(BaseSettings):
     database_password: str = "postgres"
     database_host: str = "localhost"
     database_port: int = 5432
+    database_engine: str = "django.db.backends.postgresql"
 
     # Application
     language_code: str = "pt-br"
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "src.infrastructure.django",
 ]
 
 MIDDLEWARE = [
@@ -67,12 +69,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "config.urls"
+ROOT_URLCONF = "src.infrastructure.config.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": list[Path](),
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,13 +86,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION = "src.infrastructure.config.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": settings.database_engine,
         "NAME": settings.database_name,
         "USER": settings.database_user,
         "PASSWORD": settings.database_password,
@@ -103,7 +105,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        ),
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
