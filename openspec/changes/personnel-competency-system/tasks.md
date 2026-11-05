@@ -63,14 +63,14 @@
 
 ## 7. Domain Layer - Gap Analysis Domain Service
 
-- [ ] 7.1 Implement CompetencyGap value object (competencyId, currentLevel, requiredLevel, gap, weight) and verify unit test covers creation
-- [ ] 7.2 Implement GapAnalysisService.calculate_gaps accepting Evaluation and PathLevel entities and verify unit test with in-memory entities calculates correct gaps
-- [ ] 7.3 Add gap sorting logic (CORE first, then IMPORTANT, then DESIRABLE, secondary by gap size) and verify unit test covers ordering
-- [ ] 7.4 Handle unmeasured competencies treating them as level 0 and verify unit test covers full gap for missing measurements
-- [ ] 7.5 Implement progression eligibility check based on CORE requirements and verify unit test covers eligible/not eligible scenarios
-- [ ] 7.6 Add generate_recommendation method producing textual guidance and verify unit test covers different gap sizes and weights
-- [ ] 7.7 Verify service has zero infrastructure dependencies (no imports from infrastructure/presentation) and run Pyrefly to confirm
-- [ ] 7.8 Document GapAnalysisService with docstrings explaining pure domain logic approach
+- [x] 7.1 Implement CompetencyGap value object (competencyId, currentLevel, requiredLevel, gap, weight) and verify unit test covers creation
+- [x] 7.2 Implement GapAnalysisService.calculate_gaps accepting Evaluation and PathLevel entities and verify unit test with in-memory entities calculates correct gaps
+- [x] 7.3 Add gap sorting logic (CORE first, then IMPORTANT, then DESIRABLE, secondary by gap size) and verify unit test covers ordering
+- [x] 7.4 Handle unmeasured competencies treating them as level 0 and verify unit test covers full gap for missing measurements
+- [x] 7.5 Implement progression eligibility check based on CORE requirements and verify unit test covers eligible/not eligible scenarios
+- [x] 7.6 Add generate_recommendation method producing textual guidance and verify unit test covers different gap sizes and weights
+- [x] 7.7 Verify service has zero infrastructure dependencies (no imports from infrastructure/presentation) and run Pyrefly to confirm
+- [x] 7.8 Document GapAnalysisService with docstrings explaining pure domain logic approach
 
 ## 8. Application Layer - DTOs and Ports
 
