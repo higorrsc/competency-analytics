@@ -173,7 +173,7 @@
 - [x] 16.5 Create integration test for gap analysis with missing measurements: evaluation with partial measurements → calculate gaps, and verify unmeasured treated as level 0
 - [x] 16.6 Create integration test for temporal queries: multiple evaluations over time → query history, and verify chronological ordering with level changes
 - [x] 16.7 Create integration test preventing competency deletion: competency used in path → attempt delete, and verify rejection with reference error
-- [ ] 16.8 Verify all integration tests use real database (not fakes) and complete successfully
+- [x] 16.8 Verify all integration tests use real database (not fakes) and complete successfully
 
 ## 17. Documentation and Finalization
 
