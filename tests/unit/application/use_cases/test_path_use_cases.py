@@ -12,7 +12,11 @@ from src.application.use_cases.errors import (
     NotFoundError,
     ValidationError,
 )
-from src.application.use_cases.path_use_cases import CreateCareerPathUseCase
+from src.application.use_cases.path_use_cases import (
+    CreateCareerPathUseCase,
+    GetCareerPathUseCase,
+    ListCareerPathsUseCase,
+)
 from src.domain.entities.competency import Competency
 from src.domain.value_objects.category_id import CategoryId
 from src.domain.value_objects.competency_id import CompetencyId
@@ -161,3 +165,62 @@ class TestCreateCareerPathUseCase:
                     ],
                 )
             )
+
+
+class TestGetCareerPathUseCase:
+    """Tests for GetCareerPathUseCase."""
+
+    def test_should_return_path_when_found(self) -> None:
+        path_repo = FakePathRepository()
+        comp_repo = FakeCompetencyRepository()
+        created = CreateCareerPathUseCase(path_repo, comp_repo).execute(
+            PathCreateDTO(
+                name="Backend Track",
+                description="Path for backend devs",
+                levels=[LevelCreateDTO(name="Junior", order=1)],
+            )
+        )
+
+        use_case = GetCareerPathUseCase(path_repo)
+        response = use_case.execute(PathId(created.id))
+
+        assert response.id == created.id
+        assert response.name == "Backend Track"
+        assert len(response.levels) == 1
+
+    def test_should_raise_not_found_when_path_absent(self) -> None:
+        use_case = GetCareerPathUseCase(FakePathRepository())
+        with pytest.raises(NotFoundError):
+            use_case.execute(PathId.generate())
+
+
+class TestListCareerPathsUseCase:
+    """Tests for ListCareerPathsUseCase."""
+
+    def test_should_return_all_paths(self) -> None:
+        path_repo = FakePathRepository()
+        comp_repo = FakeCompetencyRepository()
+        create = CreateCareerPathUseCase(path_repo, comp_repo)
+
+        p1 = create.execute(
+            PathCreateDTO(
+                name="Track 1",
+                description="Desc 1",
+                levels=[LevelCreateDTO(name="L1", order=1)],
+            )
+        )
+        p2 = create.execute(
+            PathCreateDTO(
+                name="Track 2",
+                description="Desc 2",
+                levels=[LevelCreateDTO(name="L1", order=1)],
+            )
+        )
+
+        use_case = ListCareerPathsUseCase(path_repo)
+        results = use_case.execute()
+
+        assert len(results) == 2
+        ids = {r.id for r in results}
+        assert p1.id in ids
+        assert p2.id in ids

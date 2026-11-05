@@ -18,6 +18,8 @@ from src.application.use_cases.evaluation_use_cases import (
     AddMeasurementToEvaluationUseCase,
     ContestEvaluationUseCase,
     CreateEvaluationUseCase,
+    GetEvaluationUseCase,
+    ListEvaluationsUseCase,
     SubmitEvaluationUseCase,
 )
 from src.domain.entities.collaborator import Collaborator
@@ -446,3 +448,52 @@ class TestContestEvaluationUseCase:
 
         with pytest.raises(ConflictError, match="transition"):
             use_case.execute(evaluation.id, response_notes="Disagree")
+
+
+class TestGetEvaluationUseCase:
+    """Tests for GetEvaluationUseCase."""
+
+    def test_should_return_evaluation_when_found(self) -> None:
+        eval_repo = FakeEvaluationRepository()
+        collab_repo = FakeCollaboratorRepository()
+        c = make_collaborator()
+        e = make_collaborator()
+        collab_repo.save(c)
+        collab_repo.save(e)
+        evaluation = make_evaluation(c.id, e.id, eval_repo)
+
+        use_case = GetEvaluationUseCase(eval_repo)
+        response = use_case.execute(evaluation.id)
+
+        assert response.id == evaluation.id.value
+        assert response.collaborator_id == c.id.value
+
+    def test_should_raise_not_found_when_evaluation_missing(self) -> None:
+        use_case = GetEvaluationUseCase(FakeEvaluationRepository())
+        with pytest.raises(NotFoundError):
+            use_case.execute(EvaluationIdVo.generate())
+
+
+class TestListEvaluationsUseCase:
+    """Tests for ListEvaluationsUseCase."""
+
+    def test_should_list_evaluations_optionally_filtered(self) -> None:
+        eval_repo = FakeEvaluationRepository()
+        collab_repo = FakeCollaboratorRepository()
+        c1 = make_collaborator()
+        c2 = make_collaborator()
+        evaluator = make_collaborator()
+        collab_repo.save(c1)
+        collab_repo.save(c2)
+        collab_repo.save(evaluator)
+
+        ev1 = make_evaluation(c1.id, evaluator.id, eval_repo)
+        make_evaluation(c2.id, evaluator.id, eval_repo)
+
+        use_case = ListEvaluationsUseCase(eval_repo)
+        all_evals = use_case.execute()
+        assert len(all_evals) == 2
+
+        filtered = use_case.execute(collaborator_id=c1.id)
+        assert len(filtered) == 1
+        assert filtered[0].id == ev1.id.value

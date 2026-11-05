@@ -39,6 +39,15 @@ class FakeEvaluationRepository:
             return None
         return max(finalized, key=lambda evaluation: evaluation.evaluation_date)
 
+    def find_all(
+        self, *, collaborator_id: CollaboratorId | None = None
+    ) -> list[Evaluation]:
+        """Return all stored evaluations, optionally filtered."""
+        evals = list(self._evaluations.values())
+        if collaborator_id is not None:
+            evals = [e for e in evals if e.collaborator_id == collaborator_id]
+        return sorted(evals, key=lambda e: e.evaluation_date, reverse=True)
+
 
 class TestEvaluationRepositoryProtocol:
     """Test that the protocol describes the expected evaluation contract."""

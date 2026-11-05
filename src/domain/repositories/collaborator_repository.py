@@ -54,3 +54,12 @@ class CollaboratorRepository(Protocol):
             Collaborators enrolled in the given path.
         """
         ...
+
+    def find_all(self) -> list[Collaborator]:
+        """
+        Return every registered collaborator.
+
+        Returns:
+            All collaborators in the system.
+        """
+        ...

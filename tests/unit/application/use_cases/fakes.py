@@ -98,6 +98,10 @@ class FakeCollaboratorRepository:
         ]
         return result
 
+    def find_all(self) -> list[Collaborator]:
+        """Return all stored collaborators."""
+        return list(self._collaborators.values())
+
 
 class FakeEvaluationRepository:
     """In-memory evaluation repository satisfying the domain protocol."""
@@ -131,3 +135,12 @@ class FakeEvaluationRepository:
             finalized,
             key=lambda evaluation: evaluation.evaluation_date,
         )
+
+    def find_all(
+        self, *, collaborator_id: CollaboratorId | None = None
+    ) -> list[Evaluation]:
+        """Return evaluations, optionally filtered by collaborator."""
+        evals = list(self._evaluations.values())
+        if collaborator_id is not None:
+            evals = [e for e in evals if e.collaborator_id == collaborator_id]
+        return sorted(evals, key=lambda e: e.evaluation_date, reverse=True)

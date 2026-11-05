@@ -372,3 +372,60 @@ def _load_evaluation(
     if evaluation is None:
         raise NotFoundError("Evaluation", evaluation_id.value)
     return evaluation
+
+
+class GetEvaluationUseCase:
+    """Use case for retrieving an evaluation by identifier."""
+
+    def __init__(self, repository: EvaluationRepository) -> None:
+        """
+        Initialize the use case with its repository dependency.
+
+        Args:
+            repository: Abstraction for evaluation persistence.
+        """
+        self._repository = repository
+
+    def execute(self, evaluation_id: EvaluationId) -> EvaluationResponseDTO:
+        """
+        Retrieve an evaluation by identifier.
+
+        Args:
+            evaluation_id: Identifier of the requested evaluation.
+
+        Returns:
+            The mapped evaluation response DTO.
+
+        Raises:
+            NotFoundError: When no evaluation matches the identifier.
+        """
+        evaluation = _load_evaluation(self._repository, evaluation_id)
+        return map_evaluation(evaluation)
+
+
+class ListEvaluationsUseCase:
+    """Use case for listing evaluations."""
+
+    def __init__(self, repository: EvaluationRepository) -> None:
+        """
+        Initialize the use case with its repository dependency.
+
+        Args:
+            repository: Abstraction for evaluation persistence.
+        """
+        self._repository = repository
+
+    def execute(
+        self, *, collaborator_id: CollaboratorId | None = None
+    ) -> list[EvaluationResponseDTO]:
+        """
+        List evaluations, optionally filtered by collaborator.
+
+        Args:
+            collaborator_id: Optional collaborator filter.
+
+        Returns:
+            List of matching evaluation response DTOs.
+        """
+        evaluations = self._repository.find_all(collaborator_id=collaborator_id)
+        return [map_evaluation(e) for e in evaluations]

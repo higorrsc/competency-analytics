@@ -39,6 +39,10 @@ class FakeCollaboratorRepository:
             result.append(collaborator)
         return result
 
+    def find_all(self) -> list[Collaborator]:
+        """Return all stored collaborators."""
+        return list(self._collaborators.values())
+
 
 class TestCollaboratorRepositoryProtocol:
     """Test that the protocol describes the expected collaborator contract."""

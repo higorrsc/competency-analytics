@@ -97,6 +97,20 @@ class DjangoCollaboratorRepository:
         queryset = queryset.distinct().prefetch_related("enrollments").order_by("name")
         return [self._to_domain(model) for model in queryset]
 
+    def find_all(self) -> list[Collaborator]:
+        """
+        Return every registered collaborator.
+
+        Returns:
+            List of domain Collaborator aggregates.
+        """
+        queryset = (
+            CollaboratorModel.objects.all()
+            .prefetch_related("enrollments")
+            .order_by("name")
+        )
+        return [self._to_domain(model) for model in queryset]
+
     @classmethod
     def _to_domain(cls, model: CollaboratorModel) -> Collaborator:
         """Map CollaboratorModel and its enrollments to domain Collaborator."""

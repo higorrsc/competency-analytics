@@ -137,6 +137,24 @@ class DjangoEvaluationRepository:
             return None
         return self._to_domain(model)
 
+    def find_all(
+        self, *, collaborator_id: CollaboratorId | None = None
+    ) -> list[Evaluation]:
+        """
+        Return evaluations, optionally filtered by collaborator.
+
+        Args:
+            collaborator_id: Optional collaborator filter.
+
+        Returns:
+            List of domain Evaluation aggregates.
+        """
+        queryset = EvaluationModel.objects.all().prefetch_related("measurements")
+        if collaborator_id is not None:
+            queryset = queryset.filter(collaborator_id=collaborator_id.value)
+        queryset = queryset.order_by("-evaluation_date", "-created_at")
+        return [self._to_domain(model) for model in queryset]
+
     @classmethod
     def _to_domain(cls, model: EvaluationModel) -> Evaluation:
         """Map EvaluationModel and its measurements to domain Evaluation."""

@@ -168,3 +168,57 @@ class CreateCareerPathUseCase:
             path.add_level(path_level)
         except CompetencyPathValidationError as exc:
             raise ConflictError(str(exc)) from exc
+
+
+class GetCareerPathUseCase:
+    """Use case for retrieving a single career path by identifier."""
+
+    def __init__(self, repository: PathRepository) -> None:
+        """
+        Initialize the use case with its repository dependency.
+
+        Args:
+            repository: Abstraction for career path persistence.
+        """
+        self._repository = repository
+
+    def execute(self, path_id: PathId) -> PathResponseDTO:
+        """
+        Retrieve a career path by identifier.
+
+        Args:
+            path_id: Identifier of the requested path.
+
+        Returns:
+            The mapped path response DTO with levels and requirements.
+
+        Raises:
+            NotFoundError: When no path exists with the given id.
+        """
+        path = self._repository.get_by_id(path_id)
+        if path is None:
+            raise NotFoundError("CareerPath", path_id.value)
+        return map_path(path)
+
+
+class ListCareerPathsUseCase:
+    """Use case for listing all career paths."""
+
+    def __init__(self, repository: PathRepository) -> None:
+        """
+        Initialize the use case with its repository dependency.
+
+        Args:
+            repository: Abstraction for career path persistence.
+        """
+        self._repository = repository
+
+    def execute(self) -> list[PathResponseDTO]:
+        """
+        List all career paths in the catalog.
+
+        Returns:
+            List of career path response DTOs.
+        """
+        paths = self._repository.find_all()
+        return [map_path(p) for p in paths]

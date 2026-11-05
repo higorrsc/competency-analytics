@@ -56,3 +56,17 @@ class EvaluationRepository(Protocol):
             collaborator has no finalized evaluation.
         """
         ...
+
+    def find_all(
+        self, *, collaborator_id: CollaboratorId | None = None
+    ) -> list[Evaluation]:
+        """
+        Return evaluations, optionally filtered by collaborator.
+
+        Args:
+            collaborator_id: Optional collaborator filter.
+
+        Returns:
+            List of matching evaluations.
+        """
+        ...
