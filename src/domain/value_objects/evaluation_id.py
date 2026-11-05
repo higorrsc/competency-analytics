@@ -1,5 +1,7 @@
 """EvaluationId value object for type-safe evaluation identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class EvaluationId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "EvaluationId":
+    def generate(cls) -> EvaluationId:
         """Generate a new unique EvaluationId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "EvaluationId":
+    def from_string(cls, id_string: str) -> EvaluationId:
         """
         Create EvaluationId from string representation.
 

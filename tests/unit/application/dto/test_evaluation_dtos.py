@@ -65,7 +65,9 @@ class TestMeasurementCreateDTO:
     def test_should_reject_blank_optional_text(self, field: str) -> None:
         """Optional texts must not be blank when provided."""
         with pytest.raises(ValidationError, match=field):
-            MeasurementCreateDTO(competency_id=uuid4(), current_level=3, **{field: "   "})
+            MeasurementCreateDTO(
+                competency_id=uuid4(), current_level=3, **{field: "   "}
+            )
 
 
 class TestEvaluationCreateDTO:

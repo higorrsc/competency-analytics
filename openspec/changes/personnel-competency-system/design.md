@@ -145,28 +145,29 @@ from typing import Protocol
 from domain.entities.evaluation import Evaluation, EvaluationId
 from domain.value_objects.collaborator_id import CollaboratorId
 
+
 class EvaluationRepository(Protocol):
     """Repository abstraction for Evaluation aggregate."""
-    
+
     def save(self, evaluation: Evaluation) -> None:
         """Persist evaluation aggregate."""
         ...
-    
+
     def get_by_id(self, evaluation_id: EvaluationId) -> Evaluation | None:
         """Retrieve evaluation by ID."""
         ...
-    
+
     def find_latest_finalized_for_collaborator(
-        self, 
-        collaborator_id: CollaboratorId
+        self, collaborator_id: CollaboratorId
     ) -> Evaluation | None:
         """Get most recent ACEITA or CONTESTADA evaluation."""
         ...
 
+
 # infrastructure/django/repositories/django_evaluation_repository.py
 class DjangoEvaluationRepository:
     """Django ORM implementation of EvaluationRepository."""
-    
+
     def save(self, evaluation: Evaluation) -> None:
         # Map domain entity to Django model and save
         ...
@@ -357,39 +358,37 @@ CHECK (
 # domain/services/gap_analysis_service.py
 class GapAnalysisService:
     """Pure domain service for calculating competency gaps."""
-    
+
     def calculate_gaps(
-        self,
-        evaluation: Evaluation,
-        target_level: PathLevel
+        self, evaluation: Evaluation, target_level: PathLevel
     ) -> list[CompetencyGap]:
         """
         Calculate gaps between evaluation and path level requirements.
-        
+
         Pure function - no database queries, no external calls.
         """
         gaps: list[CompetencyGap] = []
-        
+
         for requirement in target_level.requirements:
             measurement = evaluation.find_measurement(requirement.competency_id)
-            
+
             if measurement is None:
                 gap_size = requirement.minimum_level
                 current_level = 0
             else:
                 current_level = measurement.current_level
                 gap_size = max(0, requirement.minimum_level - current_level)
-            
+
             gaps.append(
                 CompetencyGap(
                     competency_id=requirement.competency_id,
                     current_level=current_level,
                     required_level=requirement.minimum_level,
                     gap=gap_size,
-                    weight=requirement.weight
+                    weight=requirement.weight,
                 )
             )
-        
+
         # Sort by weight (CORE first), then gap size
         return self._sort_by_priority(gaps)
 ```

@@ -1,5 +1,7 @@
 """CompetencyGap value object for gap analysis results."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 
 from src.domain.exceptions.gap_analysis_errors import GapAnalysisError
@@ -56,7 +58,8 @@ class CompetencyGap:
         """
         if not isinstance(competency_id, CompetencyId):
             raise GapAnalysisError(
-                f"Gap competency_id must be a CompetencyId, got {type(competency_id).__name__}"
+                f"Gap competency_id must be a CompetencyId, got "
+                f"{type(competency_id).__name__}"
             )
 
     @staticmethod
@@ -72,7 +75,8 @@ class CompetencyGap:
         """
         if not isinstance(level, int) or isinstance(level, bool) or not 0 <= level <= 5:
             raise GapAnalysisError(
-                f"Current level must be 0 or one of {sorted(VALID_LEVELS)}, got {level!r}"
+                f"Current level must be 0 or one of {sorted(VALID_LEVELS)}, "
+                f"got {level!r}"
             )
 
     @staticmethod

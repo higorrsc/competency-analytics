@@ -1,5 +1,7 @@
 """CollaboratorId value object for type-safe collaborator identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class CollaboratorId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "CollaboratorId":
+    def generate(cls) -> CollaboratorId:
         """Generate a new unique CollaboratorId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "CollaboratorId":
+    def from_string(cls, id_string: str) -> CollaboratorId:
         """
         Create CollaboratorId from string representation.
 

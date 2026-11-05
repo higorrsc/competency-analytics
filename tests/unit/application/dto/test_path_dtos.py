@@ -23,7 +23,9 @@ class TestRequirementDTOs:
         """A requirement within the level scale is accepted."""
         competency_id = uuid4()
 
-        dto = RequirementCreateDTO(competency_id=competency_id, minimum_level=4, weight="CORE")
+        dto = RequirementCreateDTO(
+            competency_id=competency_id, minimum_level=4, weight="CORE"
+        )
 
         assert dto.competency_id == competency_id
         assert dto.minimum_level == 4
@@ -33,16 +35,22 @@ class TestRequirementDTOs:
     def test_should_reject_minimum_level_outside_scale(self, level: int) -> None:
         """Minimum levels must be between 1 and 5."""
         with pytest.raises(ValidationError, match="minimum_level"):
-            RequirementCreateDTO(competency_id=uuid4(), minimum_level=level, weight="CORE")
+            RequirementCreateDTO(
+                competency_id=uuid4(), minimum_level=level, weight="CORE"
+            )
 
     def test_should_reject_unknown_weight(self) -> None:
         """Weights must be one of the supported values."""
         with pytest.raises(ValidationError, match="weight"):
-            RequirementCreateDTO(competency_id=uuid4(), minimum_level=4, weight="ESSENTIAL")
+            RequirementCreateDTO(
+                competency_id=uuid4(), minimum_level=4, weight="ESSENTIAL"
+            )
 
     def test_should_map_requirement_response(self) -> None:
         """Response DTOs can be built from attribute-based objects."""
-        entity = SimpleNamespace(competency_id=uuid4(), minimum_level=3, weight="IMPORTANT")
+        entity = SimpleNamespace(
+            competency_id=uuid4(), minimum_level=3, weight="IMPORTANT"
+        )
 
         dto = RequirementResponseDTO.model_validate(entity)
 
@@ -55,7 +63,9 @@ class TestLevelDTOs:
 
     def test_should_accept_valid_level(self) -> None:
         """A level with requirements is accepted."""
-        requirement = RequirementCreateDTO(competency_id=uuid4(), minimum_level=4, weight="CORE")
+        requirement = RequirementCreateDTO(
+            competency_id=uuid4(), minimum_level=4, weight="CORE"
+        )
 
         dto = LevelCreateDTO(name="Senior", order=3, requirements=[requirement])
 
@@ -77,12 +87,16 @@ class TestLevelDTOs:
     def test_should_reject_non_positive_order(self) -> None:
         """Level orders start at 1."""
         with pytest.raises(ValidationError, match="order"):
-            LevelCreateDTO(name="Senior", order=0)
+            LevelCreateDTO(name="Senior", order=int("0"))
 
     def test_should_map_level_response(self) -> None:
         """Response DTOs nest requirement DTOs from attributes."""
-        requirement = SimpleNamespace(competency_id=uuid4(), minimum_level=4, weight="CORE")
-        entity = SimpleNamespace(id=uuid4(), name="Senior", order=3, requirements=[requirement])
+        requirement = SimpleNamespace(
+            competency_id=uuid4(), minimum_level=4, weight="CORE"
+        )
+        entity = SimpleNamespace(
+            id=uuid4(), name="Senior", order=3, requirements=[requirement]
+        )
 
         dto = LevelResponseDTO.model_validate(entity)
 
@@ -125,8 +139,12 @@ class TestPathDTOs:
 
     def test_should_map_path_response(self) -> None:
         """Response DTOs nest level and requirement DTOs from attributes."""
-        requirement = SimpleNamespace(competency_id=uuid4(), minimum_level=4, weight="DESIRABLE")
-        level = SimpleNamespace(id=uuid4(), name="Senior", order=3, requirements=[requirement])
+        requirement = SimpleNamespace(
+            competency_id=uuid4(), minimum_level=4, weight="DESIRABLE"
+        )
+        level = SimpleNamespace(
+            id=uuid4(), name="Senior", order=3, requirements=[requirement]
+        )
         entity = SimpleNamespace(
             id=uuid4(),
             name="Software Engineer Track",
@@ -145,7 +163,9 @@ class TestPathDTOs:
             id=path_id,
             name="Track",
             description="Description",
-            levels=[LevelResponseDTO(id=uuid4(), name="Junior", order=1, requirements=[])],
+            levels=[
+                LevelResponseDTO(id=uuid4(), name="Junior", order=1, requirements=[])
+            ],
         )
 
         assert dto.id == path_id

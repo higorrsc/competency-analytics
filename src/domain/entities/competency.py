@@ -1,5 +1,7 @@
 """Competency entity belonging to the hierarchical competency catalog."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import cast
 
@@ -106,7 +108,9 @@ class Competency:
 
         if unexpected_levels:
             unexpected = ", ".join(str(level) for level in sorted(unexpected_levels))
-            raise CompetencyValidationError(f"Unexpected proficiency levels: {unexpected}")
+            raise CompetencyValidationError(
+                f"Unexpected proficiency levels: {unexpected}"
+            )
 
     def description_for_level(self, level: int) -> str:
         """
@@ -123,7 +127,8 @@ class Competency:
         """
         if not is_valid_level(level):
             raise CompetencyValidationError(
-                f"Invalid proficiency level {level}; expected one of {sorted(VALID_LEVELS)}"
+                f"Invalid proficiency level {level}; expected one of "
+                f"{sorted(VALID_LEVELS)}"
             )
         return self.level_descriptions[level]
 

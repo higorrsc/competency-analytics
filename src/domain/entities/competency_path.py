@@ -1,5 +1,7 @@
 """CompetencyPath aggregate root for career progression structures."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from typing import cast
 
@@ -73,7 +75,9 @@ class CompetencyPath:
                 the orders are not the sequence 1..N.
         """
         if not isinstance(levels, list):
-            raise CompetencyPathValidationError("Career path levels must be a list of PathLevel")
+            raise CompetencyPathValidationError(
+                "Career path levels must be a list of PathLevel"
+            )
 
         seen_ids: set[LevelId] = set()
         seen_names: set[str] = set()
@@ -85,12 +89,18 @@ class CompetencyPath:
                     "Career path levels must be PathLevel instances"
                 )
             if level.id in seen_ids:
-                raise CompetencyPathValidationError(f"Duplicate level identity {level.id}")
+                raise CompetencyPathValidationError(
+                    f"Duplicate level identity {level.id}"
+                )
             normalized_name = level.name.casefold()
             if normalized_name in seen_names:
-                raise CompetencyPathValidationError(f"Duplicate level name {level.name!r}")
+                raise CompetencyPathValidationError(
+                    f"Duplicate level name {level.name!r}"
+                )
             if level.order in seen_orders:
-                raise CompetencyPathValidationError(f"Duplicate level order {level.order}")
+                raise CompetencyPathValidationError(
+                    f"Duplicate level order {level.order}"
+                )
             seen_ids.add(level.id)
             seen_names.add(normalized_name)
             seen_orders.add(level.order)
@@ -208,4 +218,7 @@ class CompetencyPath:
 
     def __repr__(self) -> str:
         """Return a developer-friendly representation."""
-        return f"CompetencyPath(id={self.id!r}, name={self.name!r}, levels={len(self.levels)})"
+        return (
+            f"CompetencyPath(id={self.id!r}, name={self.name!r}, "
+            f"levels={len(self.levels)})"
+        )

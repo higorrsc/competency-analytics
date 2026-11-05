@@ -1,5 +1,7 @@
 """CompetencyId value object for type-safe competency identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class CompetencyId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "CompetencyId":
+    def generate(cls) -> CompetencyId:
         """Generate a new unique CompetencyId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "CompetencyId":
+    def from_string(cls, id_string: str) -> CompetencyId:
         """
         Create CompetencyId from string representation.
 

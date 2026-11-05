@@ -1,5 +1,7 @@
 """CompetencyRequirement value object for career path level requirements."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 
 from src.domain.exceptions.path_errors import CompetencyPathValidationError

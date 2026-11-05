@@ -32,7 +32,8 @@ class FakeEvaluationRepository:
         finalized = [
             evaluation
             for evaluation in self._evaluations.values()
-            if evaluation.collaborator_id == collaborator_id and evaluation.status.is_finalized()
+            if evaluation.collaborator_id == collaborator_id
+            and evaluation.status.is_finalized()
         ]
         if not finalized:
             return None
@@ -68,7 +69,9 @@ class TestEvaluationRepositoryProtocol:
         repository = FakeEvaluationRepository()
         collaborator_id = CollaboratorId.generate()
 
-        assert repository.find_latest_finalized_for_collaborator(collaborator_id) is None
+        assert (
+            repository.find_latest_finalized_for_collaborator(collaborator_id) is None
+        )
 
     def test_find_latest_finalized_ignores_drafts_and_completed(self) -> None:
         """Only accepted or contested evaluations are considered finalized."""
@@ -87,7 +90,9 @@ class TestEvaluationRepositoryProtocol:
             )
         )
 
-        assert repository.find_latest_finalized_for_collaborator(collaborator_id) is None
+        assert (
+            repository.find_latest_finalized_for_collaborator(collaborator_id) is None
+        )
 
     def test_find_latest_finalized_returns_most_recent(self) -> None:
         """The most recent finalized evaluation by date is returned."""
@@ -106,7 +111,9 @@ class TestEvaluationRepositoryProtocol:
         repository.save(newer)
         repository.save(older)
 
-        assert repository.find_latest_finalized_for_collaborator(collaborator_id) == newer
+        assert (
+            repository.find_latest_finalized_for_collaborator(collaborator_id) == newer
+        )
 
     def test_find_latest_finalized_filters_by_collaborator(self) -> None:
         """Evaluations from other collaborators are ignored."""
@@ -119,7 +126,10 @@ class TestEvaluationRepositoryProtocol:
         repository.save(expected)
         repository.save(make_evaluation(status=EvaluationStatus.ACCEPTED))
 
-        assert repository.find_latest_finalized_for_collaborator(collaborator_id) == expected
+        assert (
+            repository.find_latest_finalized_for_collaborator(collaborator_id)
+            == expected
+        )
 
     def test_save_updates_existing_evaluation(self) -> None:
         """Saving the same identity replaces the stored aggregate."""

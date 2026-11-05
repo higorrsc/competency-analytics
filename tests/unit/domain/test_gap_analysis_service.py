@@ -139,7 +139,9 @@ class TestCalculateGaps:
         measured = CompetencyId.generate()
         unmeasured = CompetencyId.generate()
         evaluation = make_evaluation([make_measurement(measured, 3)])
-        level = make_level([make_requirement(unmeasured, 4, RequirementWeight.IMPORTANT)])
+        level = make_level(
+            [make_requirement(unmeasured, 4, RequirementWeight.IMPORTANT)]
+        )
 
         gaps = GapAnalysisService().calculate_gaps(evaluation, level)
 
@@ -152,7 +154,9 @@ class TestCalculateGaps:
         """Every requirement is evaluated, including met ones."""
         first = CompetencyId.generate()
         second = CompetencyId.generate()
-        evaluation = make_evaluation([make_measurement(first, 5), make_measurement(second, 1)])
+        evaluation = make_evaluation(
+            [make_measurement(first, 5), make_measurement(second, 1)]
+        )
         level = make_level(
             [
                 make_requirement(first, 4, RequirementWeight.CORE),
@@ -196,7 +200,9 @@ class TestCalculateGaps:
         """Within the same weight, larger gaps come first."""
         larger = CompetencyId.generate()
         smaller = CompetencyId.generate()
-        evaluation = make_evaluation([make_measurement(larger, 1), make_measurement(smaller, 4)])
+        evaluation = make_evaluation(
+            [make_measurement(larger, 1), make_measurement(smaller, 4)]
+        )
         level = make_level(
             [
                 make_requirement(smaller, 5, RequirementWeight.CORE),
@@ -213,7 +219,9 @@ class TestCalculateGaps:
         """Equal weight and gap size are ordered by competency id."""
         first = CompetencyId.generate()
         second = CompetencyId.generate()
-        evaluation = make_evaluation([make_measurement(first, 2), make_measurement(second, 2)])
+        evaluation = make_evaluation(
+            [make_measurement(first, 2), make_measurement(second, 2)]
+        )
         level = make_level(
             [
                 make_requirement(second, 4, RequirementWeight.CORE),

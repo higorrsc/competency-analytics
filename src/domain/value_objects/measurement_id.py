@@ -1,5 +1,7 @@
 """MeasurementId value object for type-safe competency measurement identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class MeasurementId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "MeasurementId":
+    def generate(cls) -> MeasurementId:
         """Generate a new unique MeasurementId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "MeasurementId":
+    def from_string(cls, id_string: str) -> MeasurementId:
         """
         Create MeasurementId from string representation.
 

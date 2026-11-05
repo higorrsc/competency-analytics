@@ -1,5 +1,7 @@
 """PathLevel entity belonging to a career path aggregate."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from typing import cast
 
@@ -27,7 +29,9 @@ class PathLevel:
     id: LevelId
     name: str
     order: int
-    requirements: list[CompetencyRequirement] = field(default_factory=list[CompetencyRequirement])
+    requirements: list[CompetencyRequirement] = field(
+        default_factory=list[CompetencyRequirement]
+    )
 
     def __post_init__(self) -> None:
         """Validate level invariants immediately after construction."""
@@ -108,7 +112,8 @@ class PathLevel:
         """
         if self.find_requirement(requirement.competency_id) is not None:
             raise CompetencyPathValidationError(
-                f"Competency {requirement.competency_id} is already required by level {self.name}"
+                f"Competency {requirement.competency_id} is already required "
+                f"by level {self.name}"
             )
         self.requirements.append(requirement)
 
@@ -130,7 +135,9 @@ class PathLevel:
             )
         self.requirements.remove(requirement)
 
-    def find_requirement(self, competency_id: CompetencyId) -> CompetencyRequirement | None:
+    def find_requirement(
+        self, competency_id: CompetencyId
+    ) -> CompetencyRequirement | None:
         """
         Return the requirement for a competency, if present.
 
@@ -145,7 +152,9 @@ class PathLevel:
                 return requirement
         return None
 
-    def requirements_for_weight(self, weight: RequirementWeight) -> list[CompetencyRequirement]:
+    def requirements_for_weight(
+        self, weight: RequirementWeight
+    ) -> list[CompetencyRequirement]:
         """
         Return the requirements with a given weight.
 
@@ -155,7 +164,11 @@ class PathLevel:
         Returns:
             Requirements matching the weight, preserving insertion order.
         """
-        return [requirement for requirement in self.requirements if requirement.weight == weight]
+        return [
+            requirement
+            for requirement in self.requirements
+            if requirement.weight == weight
+        ]
 
     def __eq__(self, other: object) -> bool:
         """Compare levels by identity."""

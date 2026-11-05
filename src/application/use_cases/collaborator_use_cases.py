@@ -88,7 +88,8 @@ class EnrollCollaboratorInPathUseCase:
         level = path.find_level_by_name(dto.target_level)
         if level is None:
             raise ValidationError(
-                f"target level {dto.target_level!r} is not defined in path {path.name!r}"
+                f"target level {dto.target_level!r} is not defined in path "
+                f"{path.name!r}"
             )
 
         try:

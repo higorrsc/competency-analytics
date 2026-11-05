@@ -1,5 +1,7 @@
 """Pydantic DTOs produced by CQRS read models backed by database views."""
 
+from __future__ import annotations
+
 from datetime import datetime
 from uuid import UUID
 
@@ -30,7 +32,7 @@ class CompetencyHistoryEntryDTO(BaseModel):
     status: EvaluationStatus
 
     @model_validator(mode="after")
-    def validate_change_consistency(self) -> "CompetencyHistoryEntryDTO":
+    def validate_change_consistency(self) -> CompetencyHistoryEntryDTO:
         """
         Ensure previous level and level change are provided together.
 
@@ -44,7 +46,9 @@ class CompetencyHistoryEntryDTO(BaseModel):
         has_previous = self.previous_level is not None
         has_change = self.level_change is not None
         if has_previous != has_change:
-            raise ValueError("previous_level and level_change must be provided together")
+            raise ValueError(
+                "previous_level and level_change must be provided together"
+            )
         return self
 
 
@@ -61,7 +65,7 @@ class PathProgressionSummaryDTO(BaseModel):
     completion_percentage: float = Field(ge=0.0, le=100.0)
 
     @model_validator(mode="after")
-    def validate_progress_bounds(self) -> "PathProgressionSummaryDTO":
+    def validate_progress_bounds(self) -> PathProgressionSummaryDTO:
         """
         Ensure met requirements never exceed the total.
 

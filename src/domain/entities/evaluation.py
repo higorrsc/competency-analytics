@@ -1,5 +1,7 @@
 """Evaluation aggregate root for formal competency assessments."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import cast
@@ -50,7 +52,9 @@ class Evaluation:
     period: str
     evaluation_date: datetime
     status: EvaluationStatus = EvaluationStatus.DRAFT
-    measurements: list[CompetencyMeasurement] = field(default_factory=list[CompetencyMeasurement])
+    measurements: list[CompetencyMeasurement] = field(
+        default_factory=list[CompetencyMeasurement]
+    )
     submitted_at: datetime | None = None
     response_date: datetime | None = None
     response_notes: str | None = None
@@ -84,7 +88,8 @@ class Evaluation:
         """
         if not isinstance(evaluation_id, EvaluationId):
             raise EvaluationValidationError(
-                f"Evaluation id must be an EvaluationId, got {type(evaluation_id).__name__}"
+                f"Evaluation id must be an EvaluationId, got "
+                f"{type(evaluation_id).__name__}"
             )
 
     @staticmethod
@@ -166,7 +171,8 @@ class Evaluation:
         """
         if not isinstance(status, EvaluationStatus):
             raise EvaluationValidationError(
-                f"Evaluation status must be an EvaluationStatus, got {type(status).__name__}"
+                f"Evaluation status must be an EvaluationStatus, got "
+                f"{type(status).__name__}"
             )
 
     @staticmethod
@@ -195,7 +201,9 @@ class Evaluation:
                     "Evaluation measurements must be CompetencyMeasurement instances"
                 )
             if measurement.id in seen_ids:
-                raise EvaluationValidationError(f"Duplicate measurement identity {measurement.id}")
+                raise EvaluationValidationError(
+                    f"Duplicate measurement identity {measurement.id}"
+                )
             if measurement.competency_id in seen_competencies:
                 raise EvaluationValidationError(
                     "Evaluation already contains a measurement for competency "
@@ -258,7 +266,9 @@ class Evaluation:
             return
 
         if self.submitted_at is None:
-            raise EvaluationValidationError("Non-draft evaluations must have a submission date")
+            raise EvaluationValidationError(
+                "Non-draft evaluations must have a submission date"
+            )
         if not self.measurements:
             raise EvaluationValidationError(
                 "Non-draft evaluations must have at least one measurement"
@@ -266,13 +276,19 @@ class Evaluation:
 
         if self.status is EvaluationStatus.COMPLETED:
             if self.response_date is not None or self.response_notes is not None:
-                raise EvaluationValidationError("Completed evaluations cannot have response data")
+                raise EvaluationValidationError(
+                    "Completed evaluations cannot have response data"
+                )
             return
 
         if self.response_date is None:
-            raise EvaluationValidationError("Finalized evaluations must have a response date")
+            raise EvaluationValidationError(
+                "Finalized evaluations must have a response date"
+            )
         if self.status is EvaluationStatus.CONTESTED and self.response_notes is None:
-            raise EvaluationValidationError("Contested evaluations must have contestation notes")
+            raise EvaluationValidationError(
+                "Contested evaluations must have contestation notes"
+            )
 
     def add_measurement(self, measurement: CompetencyMeasurement) -> None:
         """
@@ -334,7 +350,9 @@ class Evaluation:
         candidate.pop(index)
         self.measurements = candidate
 
-    def find_measurement(self, competency_id: CompetencyId) -> CompetencyMeasurement | None:
+    def find_measurement(
+        self, competency_id: CompetencyId
+    ) -> CompetencyMeasurement | None:
         """
         Return the measurement for a competency, if present.
 
@@ -349,7 +367,9 @@ class Evaluation:
                 return measurement
         return None
 
-    def find_measurement_by_id(self, measurement_id: MeasurementId) -> CompetencyMeasurement | None:
+    def find_measurement_by_id(
+        self, measurement_id: MeasurementId
+    ) -> CompetencyMeasurement | None:
         """
         Return a measurement by identity, if present.
 
@@ -454,7 +474,9 @@ class Evaluation:
         self._ensure_not_finalized()
         if not self.status.can_be_responded():
             raise InvalidStatusTransitionError(self.status, EvaluationStatus.CONTESTED)
-        if not isinstance(cast(object, response_notes), str) or not (response_notes.strip()):
+        if not isinstance(cast(object, response_notes), str) or not (
+            response_notes.strip()
+        ):
             raise EvaluationValidationError("Contestation notes are required")
         self._validate_optional_datetime(responded_at, "responded_at")
         self.status = EvaluationStatus.CONTESTED
@@ -469,7 +491,9 @@ class Evaluation:
             EvaluationImmutableError: If the evaluation is not a draft.
         """
         if not self.status.is_draft():
-            raise EvaluationImmutableError(f"Evaluation in status {self.status.value} is immutable")
+            raise EvaluationImmutableError(
+                f"Evaluation in status {self.status.value} is immutable"
+            )
 
     def _ensure_not_finalized(self) -> None:
         """
@@ -480,7 +504,8 @@ class Evaluation:
         """
         if self.status.is_finalized():
             raise EvaluationImmutableError(
-                f"Finalized evaluation in status {self.status.value} cannot be reopened or modified"
+                f"Finalized evaluation in status {self.status.value} cannot "
+                "be reopened or modified"
             )
 
     def __eq__(self, other: object) -> bool:

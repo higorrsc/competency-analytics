@@ -1,5 +1,7 @@
 """LevelId value object for type-safe career path level identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class LevelId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "LevelId":
+    def generate(cls) -> LevelId:
         """Generate a new unique LevelId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "LevelId":
+    def from_string(cls, id_string: str) -> LevelId:
         """
         Create LevelId from string representation.
 

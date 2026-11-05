@@ -122,7 +122,8 @@ class FakeEvaluationRepository:
         finalized = [
             evaluation
             for evaluation in self._evaluations.values()
-            if evaluation.collaborator_id == collaborator_id and evaluation.status.is_finalized()
+            if evaluation.collaborator_id == collaborator_id
+            and evaluation.status.is_finalized()
         ]
         if not finalized:
             return None

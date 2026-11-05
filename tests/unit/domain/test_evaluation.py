@@ -340,7 +340,9 @@ class TestEvaluationMeasurements:
     def test_should_reject_duplicate_competency_on_add(self) -> None:
         """Adding a second measurement for a competency is rejected."""
         competency_id = CompetencyId.generate()
-        evaluation = make_evaluation(measurements=[make_measurement(competency_id=competency_id)])
+        evaluation = make_evaluation(
+            measurements=[make_measurement(competency_id=competency_id)]
+        )
 
         with pytest.raises(
             EvaluationValidationError,
@@ -356,7 +358,9 @@ class TestEvaluationMeasurements:
             EvaluationStatus.CONTESTED,
         ],
     )
-    def test_should_block_add_measurement_after_draft(self, status: EvaluationStatus) -> None:
+    def test_should_block_add_measurement_after_draft(
+        self, status: EvaluationStatus
+    ) -> None:
         """Measurements cannot be added after the draft stage."""
         evaluation = make_evaluation(status=status)
 

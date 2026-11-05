@@ -25,7 +25,9 @@ class FakeCollaboratorRepository:
         """Return a stored collaborator by identifier."""
         return self._collaborators.get(collaborator_id)
 
-    def find_by_path(self, path_id: PathId, *, active_only: bool = False) -> list[Collaborator]:
+    def find_by_path(
+        self, path_id: PathId, *, active_only: bool = False
+    ) -> list[Collaborator]:
         """Return collaborators enrolled in a path, optionally active only."""
         result: list[Collaborator] = []
         for collaborator in self._collaborators.values():
@@ -87,7 +89,9 @@ class TestCollaboratorRepositoryProtocol:
         inactive = make_collaborator(
             enrollments=[make_enrollment(path_id=path_id, is_active=False)]
         )
-        active = make_collaborator(enrollments=[make_enrollment(path_id=path_id, is_active=True)])
+        active = make_collaborator(
+            enrollments=[make_enrollment(path_id=path_id, is_active=True)]
+        )
         repository.save(inactive)
         repository.save(active)
 

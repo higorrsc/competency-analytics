@@ -1,5 +1,7 @@
 """Evaluation status enumeration representing the lifecycle states of an evaluation."""
 
+from __future__ import annotations
+
 from enum import StrEnum
 
 

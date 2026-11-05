@@ -37,7 +37,9 @@ def make_competency(
         category_id=category_id or CategoryId.generate(),
         group_id=group_id or GroupId.generate(),
         level_descriptions=(
-            level_descriptions if level_descriptions is not None else make_level_descriptions()
+            level_descriptions
+            if level_descriptions is not None
+            else make_level_descriptions()
         ),
     )
 
@@ -128,7 +130,7 @@ class TestCompetencyCreation:
 
     def test_valid_levels_constant_matches_scale(self) -> None:
         """The catalog scale is fixed at levels 1 through 5."""
-        assert VALID_LEVELS == frozenset({1, 2, 3, 4, 5})
+        assert frozenset({1, 2, 3, 4, 5}) == VALID_LEVELS
 
 
 class TestCompetencyLevelDescriptions:
@@ -146,7 +148,9 @@ class TestCompetencyLevelDescriptions:
         """Levels outside 1-5 are rejected when looked up."""
         competency = make_competency()
 
-        with pytest.raises(CompetencyValidationError, match="Invalid proficiency level"):
+        with pytest.raises(
+            CompetencyValidationError, match="Invalid proficiency level"
+        ):
             competency.description_for_level(level)
 
     def test_should_update_level_descriptions_when_valid(self) -> None:

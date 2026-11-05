@@ -34,7 +34,9 @@ class LevelCreateDTO(BaseModel):
 
     name: str
     order: int = Field(ge=1)
-    requirements: list[RequirementCreateDTO] = Field(default_factory=list[RequirementCreateDTO])
+    requirements: list[RequirementCreateDTO] = Field(
+        default_factory=list[RequirementCreateDTO]
+    )
 
     @field_validator("name")
     @classmethod

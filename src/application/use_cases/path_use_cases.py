@@ -76,7 +76,9 @@ class CreateCareerPathUseCase:
         """
         requirements_by_order: dict[int, list[CompetencyRequirement]] = {}
         for level in dto.levels:
-            requirements_by_order[level.order] = self._build_requirements(level.requirements)
+            requirements_by_order[level.order] = self._build_requirements(
+                level.requirements
+            )
 
         self._validate_level_orders(dto.levels)
 
@@ -90,7 +92,9 @@ class CreateCareerPathUseCase:
         self._path_repository.save(path)
         return map_path(path)
 
-    def _build_requirements(self, dtos: list[RequirementCreateDTO]) -> list[CompetencyRequirement]:
+    def _build_requirements(
+        self, dtos: list[RequirementCreateDTO]
+    ) -> list[CompetencyRequirement]:
         """
         Resolve requirement DTOs into domain value objects.
 
@@ -131,7 +135,8 @@ class CreateCareerPathUseCase:
         orders = {level.order for level in levels}
         if orders != set(range(1, len(levels) + 1)):
             raise ValidationError(
-                f"levels must have contiguous orders starting at 1; got {sorted(orders)}"
+                f"levels must have contiguous orders starting at 1; got "
+                f"{sorted(orders)}"
             )
 
     @staticmethod

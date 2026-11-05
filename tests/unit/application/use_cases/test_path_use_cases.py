@@ -92,7 +92,9 @@ class TestCreateCareerPathUseCase:
                     LevelCreateDTO(
                         name="Junior",
                         order=1,
-                        requirements=[make_requirement(competency.id, 2, RequirementWeight.CORE)],
+                        requirements=[
+                            make_requirement(competency.id, 2, RequirementWeight.CORE)
+                        ],
                     ),
                     LevelCreateDTO(name="Senior", order=2),
                 ],
@@ -107,7 +109,9 @@ class TestCreateCareerPathUseCase:
 
     def test_should_reject_requirement_for_unknown_competency(self) -> None:
         """Requirements must reference competencies that exist."""
-        use_case = CreateCareerPathUseCase(FakePathRepository(), FakeCompetencyRepository())
+        use_case = CreateCareerPathUseCase(
+            FakePathRepository(), FakeCompetencyRepository()
+        )
 
         with pytest.raises(NotFoundError, match="Competency"):
             use_case.execute(
@@ -127,7 +131,9 @@ class TestCreateCareerPathUseCase:
     @pytest.mark.parametrize("orders", [[1, 3], [1, 1], [2]])
     def test_should_reject_non_contiguous_level_orders(self, orders: list[int]) -> None:
         """Level orders must be a contiguous 1..N sequence."""
-        use_case = CreateCareerPathUseCase(FakePathRepository(), FakeCompetencyRepository())
+        use_case = CreateCareerPathUseCase(
+            FakePathRepository(), FakeCompetencyRepository()
+        )
 
         with pytest.raises(ValidationError, match="contiguous orders"):
             use_case.execute(
@@ -140,9 +146,11 @@ class TestCreateCareerPathUseCase:
 
     def test_should_reject_duplicate_level_names(self) -> None:
         """The domain rejects duplicated level names."""
-        use_case = CreateCareerPathUseCase(FakePathRepository(), FakeCompetencyRepository())
+        use_case = CreateCareerPathUseCase(
+            FakePathRepository(), FakeCompetencyRepository()
+        )
 
-        with pytest.raises(ConflictError, match="[Dd]uplicate"):
+        with pytest.raises(ConflictError, match=r"[Dd]uplicate"):
             use_case.execute(
                 PathCreateDTO(
                     name="Track",

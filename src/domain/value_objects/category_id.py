@@ -1,5 +1,7 @@
 """CategoryId value object for type-safe competency category identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -17,12 +19,12 @@ class CategoryId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "CategoryId":
+    def generate(cls) -> CategoryId:
         """Generate a new unique CategoryId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "CategoryId":
+    def from_string(cls, id_string: str) -> CategoryId:
         """
         Create CategoryId from string representation.
 

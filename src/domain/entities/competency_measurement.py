@@ -1,5 +1,7 @@
 """CompetencyMeasurement entity belonging to an evaluation aggregate."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, replace
 
 from src.domain.exceptions.evaluation_errors import EvaluationValidationError
@@ -52,7 +54,8 @@ class CompetencyMeasurement:
         """
         if not isinstance(measurement_id, MeasurementId):
             raise EvaluationValidationError(
-                f"Measurement id must be a MeasurementId, got {type(measurement_id).__name__}"
+                f"Measurement id must be a MeasurementId, got "
+                f"{type(measurement_id).__name__}"
             )
 
     @staticmethod
@@ -86,7 +89,8 @@ class CompetencyMeasurement:
         """
         if not is_valid_level(level):
             raise EvaluationValidationError(
-                f"Measurement level must be one of {sorted(VALID_LEVELS)}, got {level!r}"
+                f"Measurement level must be one of {sorted(VALID_LEVELS)}, "
+                f"got {level!r}"
             )
 
     @staticmethod
@@ -123,7 +127,7 @@ class CompetencyMeasurement:
         stripped = value.strip()
         return stripped or None
 
-    def with_level(self, level: int) -> "CompetencyMeasurement":
+    def with_level(self, level: int) -> CompetencyMeasurement:
         """
         Return a copy of the measurement with a different level.
 
@@ -139,7 +143,7 @@ class CompetencyMeasurement:
         self._validate_level(level)
         return replace(self, current_level=level)
 
-    def with_notes(self, notes: str | None) -> "CompetencyMeasurement":
+    def with_notes(self, notes: str | None) -> CompetencyMeasurement:
         """
         Return a copy of the measurement with different notes.
 
@@ -155,7 +159,7 @@ class CompetencyMeasurement:
         self._validate_optional_text(notes, "Notes")
         return replace(self, notes=self._normalize_text(notes))
 
-    def with_evidence(self, evidence: str | None) -> "CompetencyMeasurement":
+    def with_evidence(self, evidence: str | None) -> CompetencyMeasurement:
         """
         Return a copy of the measurement with different evidence.
 

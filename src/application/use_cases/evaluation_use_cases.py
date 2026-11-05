@@ -105,7 +105,9 @@ class CreateEvaluationUseCase:
         Raises:
             NotFoundError: When the collaborator does not exist.
         """
-        collaborator = self._collaborator_repository.get_by_id(CollaboratorId(identifier))
+        collaborator = self._collaborator_repository.get_by_id(
+            CollaboratorId(identifier)
+        )
         if collaborator is None:
             raise NotFoundError(entity, identifier)
 
@@ -165,7 +167,9 @@ class AddMeasurementToEvaluationUseCase:
         """
         evaluation = _load_evaluation(self._evaluation_repository, evaluation_id)
 
-        competency = self._competency_repository.get_by_id(CompetencyId(dto.competency_id))
+        competency = self._competency_repository.get_by_id(
+            CompetencyId(dto.competency_id)
+        )
         if competency is None:
             raise NotFoundError("Competency", dto.competency_id)
 

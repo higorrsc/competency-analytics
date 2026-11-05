@@ -105,7 +105,9 @@ class TestCreateEvaluationUseCase:
         evaluator = make_collaborator()
         collaborator_repository.save(collaborator)
         collaborator_repository.save(evaluator)
-        use_case = CreateEvaluationUseCase(evaluation_repository, collaborator_repository)
+        use_case = CreateEvaluationUseCase(
+            evaluation_repository, collaborator_repository
+        )
 
         response = use_case.execute(
             EvaluationCreateDTO(
@@ -125,7 +127,9 @@ class TestCreateEvaluationUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         evaluator = make_collaborator()
         collaborator_repository.save(evaluator)
-        use_case = CreateEvaluationUseCase(FakeEvaluationRepository(), collaborator_repository)
+        use_case = CreateEvaluationUseCase(
+            FakeEvaluationRepository(), collaborator_repository
+        )
 
         with pytest.raises(NotFoundError, match="Collaborator"):
             use_case.execute(
@@ -142,7 +146,9 @@ class TestCreateEvaluationUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = CreateEvaluationUseCase(FakeEvaluationRepository(), collaborator_repository)
+        use_case = CreateEvaluationUseCase(
+            FakeEvaluationRepository(), collaborator_repository
+        )
 
         with pytest.raises(NotFoundError, match="Evaluator"):
             use_case.execute(
@@ -176,8 +182,12 @@ class TestAddMeasurementToEvaluationUseCase:
         competency_repository = FakeCompetencyRepository()
         competency = make_competency()
         competency_repository.save(competency)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
-        use_case = AddMeasurementToEvaluationUseCase(evaluation_repository, competency_repository)
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
+        use_case = AddMeasurementToEvaluationUseCase(
+            evaluation_repository, competency_repository
+        )
         return use_case, evaluation, competency, evaluation_repository
 
     def test_should_add_measurement_to_draft(self) -> None:
@@ -226,7 +236,9 @@ class TestAddMeasurementToEvaluationUseCase:
         with pytest.raises(ConflictError, match="immutable"):
             use_case.execute(
                 evaluation.id,
-                MeasurementCreateDTO(competency_id=competency.id.value, current_level=3),
+                MeasurementCreateDTO(
+                    competency_id=competency.id.value, current_level=3
+                ),
             )
 
     def test_should_reject_duplicate_competency_measurement(self) -> None:
@@ -240,7 +252,9 @@ class TestAddMeasurementToEvaluationUseCase:
         with pytest.raises(ConflictError, match="already contains"):
             use_case.execute(
                 evaluation.id,
-                MeasurementCreateDTO(competency_id=competency.id.value, current_level=4),
+                MeasurementCreateDTO(
+                    competency_id=competency.id.value, current_level=4
+                ),
             )
 
 
@@ -260,7 +274,9 @@ class TestSubmitEvaluationUseCase:
         competency_repository = FakeCompetencyRepository()
         competency = make_competency()
         competency_repository.save(competency)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
         add_use_case = AddMeasurementToEvaluationUseCase(
             evaluation_repository, competency_repository
         )
@@ -291,7 +307,9 @@ class TestSubmitEvaluationUseCase:
         evaluator = make_collaborator()
         collaborator_repository.save(collaborator)
         collaborator_repository.save(evaluator)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
         use_case = SubmitEvaluationUseCase(evaluation_repository)
 
         with pytest.raises(ValidationError, match="at least one measurement"):
@@ -322,8 +340,12 @@ class TestAcceptEvaluationUseCase:
         competency_repository = FakeCompetencyRepository()
         competency = make_competency()
         competency_repository.save(competency)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
-        AddMeasurementToEvaluationUseCase(evaluation_repository, competency_repository).execute(
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
+        AddMeasurementToEvaluationUseCase(
+            evaluation_repository, competency_repository
+        ).execute(
             evaluation.id,
             MeasurementCreateDTO(competency_id=competency.id.value, current_level=3),
         )
@@ -352,7 +374,9 @@ class TestAcceptEvaluationUseCase:
         evaluator = make_collaborator()
         collaborator_repository.save(collaborator)
         collaborator_repository.save(evaluator)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
         use_case = AcceptEvaluationUseCase(evaluation_repository)
 
         with pytest.raises(ConflictError, match="transition"):
@@ -375,8 +399,12 @@ class TestContestEvaluationUseCase:
         competency_repository = FakeCompetencyRepository()
         competency = make_competency()
         competency_repository.save(competency)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
-        AddMeasurementToEvaluationUseCase(evaluation_repository, competency_repository).execute(
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
+        AddMeasurementToEvaluationUseCase(
+            evaluation_repository, competency_repository
+        ).execute(
             evaluation.id,
             MeasurementCreateDTO(competency_id=competency.id.value, current_level=3),
         )
@@ -400,7 +428,7 @@ class TestContestEvaluationUseCase:
         """Contestation notes are mandatory."""
         use_case, evaluation, _ = self._prepare()
 
-        with pytest.raises(ValidationError, match="[Nn]otes"):
+        with pytest.raises(ValidationError, match=r"[Nn]otes"):
             use_case.execute(evaluation.id, response_notes="   ")
 
     def test_should_reject_contesting_draft_evaluation(self) -> None:
@@ -411,7 +439,9 @@ class TestContestEvaluationUseCase:
         evaluator = make_collaborator()
         collaborator_repository.save(collaborator)
         collaborator_repository.save(evaluator)
-        evaluation = make_evaluation(collaborator.id, evaluator.id, evaluation_repository)
+        evaluation = make_evaluation(
+            collaborator.id, evaluator.id, evaluation_repository
+        )
         use_case = ContestEvaluationUseCase(evaluation_repository)
 
         with pytest.raises(ConflictError, match="transition"):

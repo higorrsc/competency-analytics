@@ -1,5 +1,7 @@
 """PathEnrollment value object for collaborator career path enrollments."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass, replace
 from datetime import datetime
 
@@ -101,7 +103,7 @@ class PathEnrollment:
                 f"Enrollment is_active must be a bool, got {type(is_active).__name__}"
             )
 
-    def activate(self) -> "PathEnrollment":
+    def activate(self) -> PathEnrollment:
         """
         Return a copy of the enrollment marked as active.
 
@@ -110,7 +112,7 @@ class PathEnrollment:
         """
         return replace(self, is_active=True)
 
-    def deactivate(self) -> "PathEnrollment":
+    def deactivate(self) -> PathEnrollment:
         """
         Return a copy of the enrollment marked as inactive.
 
@@ -119,7 +121,7 @@ class PathEnrollment:
         """
         return replace(self, is_active=False)
 
-    def with_target_level(self, target_level: str) -> "PathEnrollment":
+    def with_target_level(self, target_level: str) -> PathEnrollment:
         """
         Return a copy of the enrollment with a different target level.
 

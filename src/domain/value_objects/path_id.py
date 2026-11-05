@@ -1,5 +1,7 @@
 """PathId value object for type-safe career path identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -16,12 +18,12 @@ class PathId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "PathId":
+    def generate(cls) -> PathId:
         """Generate a new unique PathId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "PathId":
+    def from_string(cls, id_string: str) -> PathId:
         """
         Create PathId from string representation.
 

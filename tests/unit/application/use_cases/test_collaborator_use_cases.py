@@ -56,7 +56,9 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, path_repository)
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, path_repository
+        )
 
         response = use_case.execute(
             collaborator.id,
@@ -77,7 +79,9 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, path_repository)
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, path_repository
+        )
 
         response = use_case.execute(
             collaborator.id,
@@ -96,7 +100,9 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, path_repository)
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, path_repository
+        )
         use_case.execute(
             collaborator.id,
             EnrollmentCreateDTO(path_id=first.id.value, target_level="Junior"),
@@ -107,8 +113,14 @@ class TestEnrollCollaboratorInPathUseCase:
             EnrollmentCreateDTO(path_id=second.id.value, target_level="Junior"),
         )
 
-        active = [enrollment for enrollment in response.enrollments if enrollment.is_active]
-        inactive = [enrollment for enrollment in response.enrollments if not enrollment.is_active]
+        active = [
+            enrollment for enrollment in response.enrollments if enrollment.is_active
+        ]
+        inactive = [
+            enrollment
+            for enrollment in response.enrollments
+            if not enrollment.is_active
+        ]
         assert len(active) == 1
         assert active[0].path_id == second.id.value
         assert len(inactive) == 1
@@ -123,7 +135,9 @@ class TestEnrollCollaboratorInPathUseCase:
         with pytest.raises(NotFoundError, match="Collaborator"):
             use_case.execute(
                 CollaboratorId.generate(),
-                EnrollmentCreateDTO(path_id=PathId.generate().value, target_level="Junior"),
+                EnrollmentCreateDTO(
+                    path_id=PathId.generate().value, target_level="Junior"
+                ),
             )
 
     def test_should_reject_unknown_path(self) -> None:
@@ -131,12 +145,16 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, FakePathRepository())
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, FakePathRepository()
+        )
 
         with pytest.raises(NotFoundError, match="Path"):
             use_case.execute(
                 collaborator.id,
-                EnrollmentCreateDTO(path_id=PathId.generate().value, target_level="Junior"),
+                EnrollmentCreateDTO(
+                    path_id=PathId.generate().value, target_level="Junior"
+                ),
             )
 
     def test_should_reject_target_level_not_defined_in_path(self) -> None:
@@ -147,7 +165,9 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, path_repository)
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, path_repository
+        )
 
         with pytest.raises(ValidationError, match="is not defined in path"):
             use_case.execute(
@@ -163,7 +183,9 @@ class TestEnrollCollaboratorInPathUseCase:
         collaborator_repository = FakeCollaboratorRepository()
         collaborator = make_collaborator()
         collaborator_repository.save(collaborator)
-        use_case = EnrollCollaboratorInPathUseCase(collaborator_repository, path_repository)
+        use_case = EnrollCollaboratorInPathUseCase(
+            collaborator_repository, path_repository
+        )
         use_case.execute(
             collaborator.id,
             EnrollmentCreateDTO(path_id=path.id.value, target_level="Junior"),

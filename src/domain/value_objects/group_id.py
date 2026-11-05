@@ -1,5 +1,7 @@
 """GroupId value object for type-safe competency group identification."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -17,12 +19,12 @@ class GroupId:
     value: UUID
 
     @classmethod
-    def generate(cls) -> "GroupId":
+    def generate(cls) -> GroupId:
         """Generate a new unique GroupId."""
         return cls(value=uuid4())
 
     @classmethod
-    def from_string(cls, id_string: str) -> "GroupId":
+    def from_string(cls, id_string: str) -> GroupId:
         """
         Create GroupId from string representation.
 

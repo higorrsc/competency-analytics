@@ -1,5 +1,7 @@
 """Collaborator aggregate root for employee records and path enrollments."""
 
+from __future__ import annotations
+
 import re
 from collections.abc import Collection
 from dataclasses import dataclass, field
@@ -66,7 +68,8 @@ class Collaborator:
         """
         if not isinstance(collaborator_id, CollaboratorId):
             raise CollaboratorValidationError(
-                f"Collaborator id must be a CollaboratorId, got {type(collaborator_id).__name__}"
+                f"Collaborator id must be a CollaboratorId, got "
+                f"{type(collaborator_id).__name__}"
             )
 
     @staticmethod
@@ -97,7 +100,9 @@ class Collaborator:
         if not isinstance(email, str) or not email.strip():
             raise CollaboratorValidationError("Collaborator email must not be empty")
         if _EMAIL_PATTERN.fullmatch(email.strip()) is None:
-            raise CollaboratorValidationError(f"Collaborator email {email!r} is not valid")
+            raise CollaboratorValidationError(
+                f"Collaborator email {email!r} is not valid"
+            )
 
     @staticmethod
     def _validate_department(department: object) -> None:
@@ -111,7 +116,9 @@ class Collaborator:
             CollaboratorValidationError: If the department is blank.
         """
         if not isinstance(department, str) or not department.strip():
-            raise CollaboratorValidationError("Collaborator department must not be empty")
+            raise CollaboratorValidationError(
+                "Collaborator department must not be empty"
+            )
 
     @staticmethod
     def _validate_enrollments(enrollments: object) -> None:
@@ -261,7 +268,9 @@ class Collaborator:
             raise EnrollmentNotFoundError(path_id)
 
         candidate = [
-            enrollment.activate() if enrollment.path_id == path_id else enrollment.deactivate()
+            enrollment.activate()
+            if enrollment.path_id == path_id
+            else enrollment.deactivate()
             for enrollment in self.enrollments
         ]
         self._validate_enrollments(candidate)
@@ -338,7 +347,9 @@ class Collaborator:
             CollaboratorValidationError: If the collection contains non-string
                 values.
         """
-        if isinstance(available_levels, str) or not isinstance(available_levels, Collection):
+        if isinstance(available_levels, str) or not isinstance(
+            available_levels, Collection
+        ):
             raise CollaboratorValidationError(
                 "Available levels must be a collection of level names"
             )
@@ -383,5 +394,6 @@ class Collaborator:
     def __repr__(self) -> str:
         """Return a developer-friendly representation."""
         return (
-            f"Collaborator(id={self.id!r}, name={self.name!r}, enrollments={len(self.enrollments)})"
+            f"Collaborator(id={self.id!r}, name={self.name!r}, "
+            f"enrollments={len(self.enrollments)})"
         )

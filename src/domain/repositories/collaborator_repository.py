@@ -39,7 +39,9 @@ class CollaboratorRepository(Protocol):
         """
         ...
 
-    def find_by_path(self, path_id: PathId, *, active_only: bool = False) -> list[Collaborator]:
+    def find_by_path(
+        self, path_id: PathId, *, active_only: bool = False
+    ) -> list[Collaborator]:
         """
         Return collaborators enrolled in a career path.
 

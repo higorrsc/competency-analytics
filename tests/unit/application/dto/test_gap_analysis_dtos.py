@@ -69,7 +69,9 @@ class TestCompetencyGapDTO:
         assert dto.current_level == 0
 
     @pytest.mark.parametrize("current_level", [-1, 6])
-    def test_should_reject_current_level_outside_range(self, current_level: int) -> None:
+    def test_should_reject_current_level_outside_range(
+        self, current_level: int
+    ) -> None:
         """Current levels must be 0 or between 1 and 5."""
         with pytest.raises(ValidationError, match="current_level"):
             CompetencyGapDTO(
@@ -81,7 +83,9 @@ class TestCompetencyGapDTO:
             )
 
     @pytest.mark.parametrize("required_level", [0, 6])
-    def test_should_reject_required_level_outside_scale(self, required_level: int) -> None:
+    def test_should_reject_required_level_outside_scale(
+        self, required_level: int
+    ) -> None:
         """Required levels must be between 1 and 5."""
         with pytest.raises(ValidationError, match="required_level"):
             CompetencyGapDTO(
@@ -99,7 +103,7 @@ class TestCompetencyGapDTO:
                 competency_id=uuid4(),
                 current_level=2,
                 required_level=4,
-                gap=-1,
+                gap=int("-1"),
                 weight="CORE",
             )
 

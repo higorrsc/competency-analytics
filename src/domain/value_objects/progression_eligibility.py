@@ -1,5 +1,7 @@
 """ProgressionEligibility value object for gap analysis results."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import cast
 
@@ -30,9 +32,13 @@ class ProgressionEligibility:
         self._validate_blockers(self.blocking_competency_ids)
 
         if self.is_eligible and self.blocking_competency_ids:
-            raise GapAnalysisError("An eligible collaborator cannot have blocking competencies")
+            raise GapAnalysisError(
+                "An eligible collaborator cannot have blocking competencies"
+            )
         if not self.is_eligible and not self.blocking_competency_ids:
-            raise GapAnalysisError("An ineligible collaborator must have at least one blocker")
+            raise GapAnalysisError(
+                "An ineligible collaborator must have at least one blocker"
+            )
 
     @staticmethod
     def _validate_blockers(blockers: object) -> None:
@@ -47,12 +53,16 @@ class ProgressionEligibility:
                 non-CompetencyId items, or repeats a competency.
         """
         if not isinstance(blockers, tuple):
-            raise GapAnalysisError("Blocking competency ids must be a tuple of CompetencyId")
+            raise GapAnalysisError(
+                "Blocking competency ids must be a tuple of CompetencyId"
+            )
 
         seen: set[CompetencyId] = set()
         for blocker in cast(tuple[object, ...], blockers):
             if not isinstance(blocker, CompetencyId):
-                raise GapAnalysisError("Blocking competency ids must be CompetencyId instances")
+                raise GapAnalysisError(
+                    "Blocking competency ids must be CompetencyId instances"
+                )
             if blocker in seen:
                 raise GapAnalysisError(f"Duplicate blocking competency {blocker}")
             seen.add(blocker)

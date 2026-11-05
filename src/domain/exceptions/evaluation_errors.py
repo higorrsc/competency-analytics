@@ -46,7 +46,9 @@ class InvalidStatusTransitionError(DomainError):
         """
         self.current = current
         self.target = target
-        super().__init__(f"Cannot transition evaluation from {current.value} to {target.value}")
+        super().__init__(
+            f"Cannot transition evaluation from {current.value} to {target.value}"
+        )
 
 
 class MeasurementNotFoundError(DomainError):

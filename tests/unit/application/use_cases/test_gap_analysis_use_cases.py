@@ -151,7 +151,9 @@ class TestCalculateCompetencyGapsUseCase:
         """Gaps are mapped with CORE blockers surfacing eligibility."""
         world = GapAnalysisWorld()
         # Python measured at 2 (CORE gap of 2), Testing measured at 5 (no gap).
-        evaluation = world.add_finalized_evaluation({world.python.id: 2, world.testing.id: 5})
+        evaluation = world.add_finalized_evaluation(
+            {world.python.id: 2, world.testing.id: 5}
+        )
 
         response = world.use_case.execute(world.request(evaluation))
 
@@ -177,7 +179,9 @@ class TestCalculateCompetencyGapsUseCase:
     def test_should_be_eligible_when_no_core_gaps_remain(self) -> None:
         """Meeting all CORE requirements yields eligibility."""
         world = GapAnalysisWorld()
-        evaluation = world.add_finalized_evaluation({world.python.id: 5, world.testing.id: 2})
+        evaluation = world.add_finalized_evaluation(
+            {world.python.id: 5, world.testing.id: 2}
+        )
 
         response = world.use_case.execute(world.request(evaluation))
 
@@ -236,7 +240,9 @@ class TestCalculateCompetencyGapsUseCase:
     def test_should_reject_unknown_path(self) -> None:
         """The analyzed path must exist."""
         world = GapAnalysisWorld()
-        evaluation = world.add_finalized_evaluation({world.python.id: 4, world.testing.id: 3})
+        evaluation = world.add_finalized_evaluation(
+            {world.python.id: 4, world.testing.id: 3}
+        )
 
         with pytest.raises(NotFoundError, match="Path"):
             world.use_case.execute(
@@ -250,7 +256,9 @@ class TestCalculateCompetencyGapsUseCase:
     def test_should_reject_unknown_level(self) -> None:
         """The analyzed level must belong to the path."""
         world = GapAnalysisWorld()
-        evaluation = world.add_finalized_evaluation({world.python.id: 4, world.testing.id: 3})
+        evaluation = world.add_finalized_evaluation(
+            {world.python.id: 4, world.testing.id: 3}
+        )
 
         with pytest.raises(NotFoundError, match="Path level"):
             world.use_case.execute(

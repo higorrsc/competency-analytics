@@ -1,6 +1,6 @@
 """Unit tests for the read model protocol contracts."""
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from uuid import uuid4
 
 from src.application.dto.read_model_dtos import (
@@ -34,15 +34,19 @@ class FakeCompetencyHistoryReadModel:
         collaborator_id: CollaboratorId,
         *,
         competency_id: CompetencyId | None = None,
-        start_date: datetime | None = None,
-        end_date: datetime | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
     ) -> list[CompetencyHistoryEntryDTO]:
         """Return stored entries filtered by the provided criteria."""
         result = [
-            entry for entry in self._entries if entry.collaborator_id == collaborator_id.value
+            entry
+            for entry in self._entries
+            if entry.collaborator_id == collaborator_id.value
         ]
         if competency_id is not None:
-            result = [entry for entry in result if entry.competency_id == competency_id.value]
+            result = [
+                entry for entry in result if entry.competency_id == competency_id.value
+            ]
         return sorted(result, key=lambda entry: entry.evaluation_date)
 
 
@@ -166,5 +170,8 @@ class TestPathProgressionReadModelProtocol:
         read_model = FakePathProgressionReadModel()
 
         assert (
-            read_model.get_progression_summary(CollaboratorId.generate(), PathId.generate()) is None
+            read_model.get_progression_summary(
+                CollaboratorId.generate(), PathId.generate()
+            )
+            is None
         )
