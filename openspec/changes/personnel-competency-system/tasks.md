@@ -113,14 +113,14 @@
 
 ## 11. Infrastructure - Repository Implementations
 
-- [ ] 11.1 Implement DjangoCompetencyRepository mapping domain Competency to/from CompetencyModel and verify integration test with database
-- [ ] 11.2 Add reference check preventing competency deletion when used in paths or evaluations and verify integration test covers rejection
-- [ ] 11.3 Implement DjangoPathRepository mapping CompetencyPath aggregate and verify integration test covers nested levels and requirements
-- [ ] 11.4 Implement DjangoCollaboratorRepository mapping Collaborator with enrollments and verify integration test covers active path queries
-- [ ] 11.5 Implement DjangoEvaluationRepository mapping Evaluation with measurements and verify integration test covers measurement persistence
-- [ ] 11.6 Add find_latest_finalized_for_collaborator query filtering ACEITA/CONTESTADA status and verify integration test with multiple evaluations
-- [ ] 11.7 Verify all repository methods properly map between domain entities and Django models without leaking ORM into domain
-- [ ] 11.8 Add docstrings to all repository implementations explaining mapping strategy
+- [x] 11.1 Implement DjangoCompetencyRepository mapping domain Competency to/from CompetencyModel and verify integration test with database
+- [x] 11.2 Add reference check preventing competency deletion when used in paths or evaluations and verify integration test covers rejection
+- [x] 11.3 Implement DjangoPathRepository mapping CompetencyPath aggregate and verify integration test covers nested levels and requirements
+- [x] 11.4 Implement DjangoCollaboratorRepository mapping Collaborator with enrollments and verify integration test covers active path queries
+- [x] 11.5 Implement DjangoEvaluationRepository mapping Evaluation with measurements and verify integration test covers measurement persistence
+- [x] 11.6 Add find_latest_finalized_for_collaborator query filtering ACEITA/CONTESTADA status and verify integration test with multiple evaluations
+- [x] 11.7 Verify all repository methods properly map between domain entities and Django models without leaking ORM into domain
+- [x] 11.8 Add docstrings to all repository implementations explaining mapping strategy
 
 ## 12. Infrastructure - Database Views for Read Models
 
