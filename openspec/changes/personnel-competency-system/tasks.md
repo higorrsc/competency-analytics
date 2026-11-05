@@ -134,13 +134,13 @@
 
 ## 13. Presentation - Django Admin
 
-- [ ] 13.1 Register Category, CompetencyGroup, Competency models in admin with hierarchical display and verify admin interface accessible
-- [ ] 13.2 Register CompetencyPath and PathLevel with inline level editing and verify admin interface allows level management
-- [ ] 13.3 Register Collaborator with inline enrollment editing and verify admin interface shows active path
-- [ ] 13.4 Register Evaluation with inline measurement editing, read-only fields for finalized, and verify admin enforces immutability
-- [ ] 13.5 Add custom admin actions for path enrollment activation and verify action correctly deactivates others
-- [ ] 13.6 Add list filters for evaluation status, collaborator department and verify filtering works in admin
-- [ ] 13.7 Customize admin display with list_display, search_fields for all models and verify searchability
+- [x] 13.1 Register Category, CompetencyGroup, Competency models in admin with hierarchical display and verify admin interface accessible
+- [x] 13.2 Register CompetencyPath and PathLevel with inline level editing and verify admin interface allows level management
+- [x] 13.3 Register Collaborator with inline enrollment editing and verify admin interface shows active path
+- [x] 13.4 Register Evaluation with inline measurement editing, read-only fields for finalized, and verify admin enforces immutability
+- [x] 13.5 Add custom admin actions for path enrollment activation and verify action correctly deactivates others
+- [x] 13.6 Add list filters for evaluation status, collaborator department and verify filtering works in admin
+- [x] 13.7 Customize admin display with list_display, search_fields for all models and verify searchability
 
 ## 14. Presentation - REST API Endpoints
 
