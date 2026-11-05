@@ -167,8 +167,8 @@
 ## 16. Integration Testing
 
 - [x] 16.1 Create end-to-end test: create competency catalog → create path → enroll collaborator → create evaluation → calculate gaps, and verify complete workflow succeeds
-- [ ] 16.2 Create integration test for evaluation lifecycle: draft → add measurements → submit → accept, and verify immutability enforced
-- [ ] 16.3 Create integration test for contested evaluation: draft → submit → contest, and verify contestation notes required
+- [x] 16.2 Create integration test for evaluation lifecycle: draft → add measurements → submit → accept, and verify immutability enforced
+- [x] 16.3 Create integration test for contested evaluation: draft → submit → contest, and verify contestation notes required
 - [ ] 16.4 Create integration test for active path switching: enroll in path A → activate → enroll in path B → activate, and verify only B active
 - [ ] 16.5 Create integration test for gap analysis with missing measurements: evaluation with partial measurements → calculate gaps, and verify unmeasured treated as level 0
 - [ ] 16.6 Create integration test for temporal queries: multiple evaluations over time → query history, and verify chronological ordering with level changes
