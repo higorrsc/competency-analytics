@@ -144,25 +144,25 @@
 
 ## 14. Presentation - REST API Endpoints
 
-- [ ] 14.1 Implement CompetencyViewSet (CRUD) with DRF and verify API test covers create, list, retrieve
-- [ ] 14.2 Implement CareerPathViewSet with nested level/requirement serialization and verify API test covers complete structure
-- [ ] 14.3 Implement CollaboratorViewSet with enrollment management endpoints and verify API test covers enrollment creation
-- [ ] 14.4 Add custom action for activating path enrollment and verify API test covers activation and automatic deactivation
-- [ ] 14.5 Implement EvaluationViewSet with status transition endpoints (submit, accept, contest) and verify API tests cover all transitions
-- [ ] 14.6 Add nested route for adding measurements to evaluation and verify API test covers draft-only modification
-- [ ] 14.7 Implement read-only endpoint for competency gap analysis and verify API test returns correct gap calculation
-- [ ] 14.8 Implement read-only endpoint for competency history and verify API test returns temporal data
-- [ ] 14.9 Add error handling returning appropriate HTTP status codes (400, 404, 409) and verify API tests cover error responses
-- [ ] 14.10 Add API documentation with OpenAPI schema and verify swagger UI accessible
-- [ ] 14.11 Configure URL routing for all endpoints and verify `uv run manage.py show_urls` displays all routes
+- [x] 14.1 Implement CompetencyViewSet (CRUD) with DRF and verify API test covers create, list, retrieve
+- [x] 14.2 Implement CareerPathViewSet with nested level/requirement serialization and verify API test covers complete structure
+- [x] 14.3 Implement CollaboratorViewSet with enrollment management endpoints and verify API test covers enrollment creation
+- [x] 14.4 Add custom action for activating path enrollment and verify API test covers activation and automatic deactivation
+- [x] 14.5 Implement EvaluationViewSet with status transition endpoints (submit, accept, contest) and verify API tests cover all transitions
+- [x] 14.6 Add nested route for adding measurements to evaluation and verify API test covers draft-only modification
+- [x] 14.7 Implement read-only endpoint for competency gap analysis and verify API test returns correct gap calculation
+- [x] 14.8 Implement read-only endpoint for competency history and verify API test returns temporal data
+- [x] 14.9 Add error handling returning appropriate HTTP status codes (400, 404, 409) and verify API tests cover error responses
+- [x] 14.10 Add API documentation with OpenAPI schema and verify swagger UI accessible
+- [x] 14.11 Configure URL routing for all endpoints and verify `uv run manage.py show_urls` displays all routes
 
 ## 15. Dependency Injection and Composition Root
 
-- [ ] 15.1 Create dependency injection container in presentation/dependencies.py wiring use cases to repositories and verify structure
-- [ ] 15.2 Wire GapAnalysisService as singleton and verify use case receives same instance
-- [ ] 15.3 Configure DRF views to inject use cases via dependencies and verify API endpoints use correct use case instances
-- [ ] 15.4 Verify no direct repository instantiation in use cases and run Pyrefly to confirm proper injection
-- [ ] 15.5 Document dependency injection approach in README with examples
+- [x] 15.1 Create dependency injection container in presentation/dependencies.py wiring use cases to repositories and verify structure
+- [x] 15.2 Wire GapAnalysisService as singleton and verify use case receives same instance
+- [x] 15.3 Configure DRF views to inject use cases via dependencies and verify API endpoints use correct use case instances
+- [x] 15.4 Verify no direct repository instantiation in use cases and run Pyrefly to confirm proper injection
+- [x] 15.5 Document dependency injection approach in README with examples
 
 ## 16. Integration Testing
 
