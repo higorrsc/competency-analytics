@@ -74,14 +74,14 @@
 
 ## 8. Application Layer - DTOs and Ports
 
-- [ ] 8.1 Create Pydantic DTOs for Competency (CompetencyCreateDTO, CompetencyResponseDTO) and verify validation with unit tests
-- [ ] 8.2 Create Pydantic DTOs for CompetencyPath (PathCreateDTO, PathResponseDTO, LevelCreateDTO) and verify validation
-- [ ] 8.3 Create Pydantic DTOs for Collaborator (CollaboratorCreateDTO, EnrollmentCreateDTO, CollaboratorResponseDTO) and verify validation
-- [ ] 8.4 Create Pydantic DTOs for Evaluation (EvaluationCreateDTO, MeasurementCreateDTO, EvaluationResponseDTO) and verify validation
-- [ ] 8.5 Create Pydantic DTOs for gap analysis (GapAnalysisRequestDTO, GapAnalysisResponseDTO) and verify validation
-- [ ] 8.6 Define CompetencyHistoryReadModel protocol with get_history method and verify protocol structure
-- [ ] 8.7 Define PathProgressionReadModel protocol with get_progression_summary method and verify protocol structure
-- [ ] 8.8 Add comprehensive docstrings to all DTOs and protocols
+- [x] 8.1 Create Pydantic DTOs for Competency (CompetencyCreateDTO, CompetencyResponseDTO) and verify validation with unit tests
+- [x] 8.2 Create Pydantic DTOs for CompetencyPath (PathCreateDTO, PathResponseDTO, LevelCreateDTO) and verify validation
+- [x] 8.3 Create Pydantic DTOs for Collaborator (CollaboratorCreateDTO, EnrollmentCreateDTO, CollaboratorResponseDTO) and verify validation
+- [x] 8.4 Create Pydantic DTOs for Evaluation (EvaluationCreateDTO, MeasurementCreateDTO, EvaluationResponseDTO) and verify validation
+- [x] 8.5 Create Pydantic DTOs for gap analysis (GapAnalysisRequestDTO, GapAnalysisResponseDTO) and verify validation
+- [x] 8.6 Define CompetencyHistoryReadModel protocol with get_history method and verify protocol structure
+- [x] 8.7 Define PathProgressionReadModel protocol with get_progression_summary method and verify protocol structure
+- [x] 8.8 Add comprehensive docstrings to all DTOs and protocols
 
 ## 9. Application Layer - Use Cases
 
