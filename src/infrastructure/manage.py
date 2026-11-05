@@ -1,12 +1,24 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 
+from __future__ import annotations
+
 import os
 import sys
+from pathlib import Path
 
 
 def main() -> None:
     """Run administrative tasks."""
+    script_dir = str(Path(__file__).resolve().parent)
+    project_root = str(Path(__file__).resolve().parent.parent.parent)
+
+    # Avoid script directory shadowing the top-level 'django' package
+    if sys.path and sys.path[0] == script_dir:
+        sys.path.pop(0)
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
+
     os.environ.setdefault(
         "DJANGO_SETTINGS_MODULE",
         "src.infrastructure.config.settings",

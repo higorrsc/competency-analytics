@@ -1,8 +1,11 @@
 """Django settings configuration using pydantic-settings."""
 
+import sys
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_is_testing = "pytest" in sys.modules or any("pytest" in arg for arg in sys.argv)
 
 
 class Settings(BaseSettings):
@@ -21,12 +24,14 @@ class Settings(BaseSettings):
     allowed_hosts: list[str] = ["localhost", "127.0.0.1"]
 
     # Database
-    database_name: str = "competency_analytics"
+    database_name: str = ":memory:" if _is_testing else "competency_analytics"
     database_user: str = "postgres"
     database_password: str = "postgres"
     database_host: str = "localhost"
     database_port: int = 5432
-    database_engine: str = "django.db.backends.postgresql"
+    database_engine: str = (
+        "django.db.backends.sqlite3" if _is_testing else "django.db.backends.postgresql"
+    )
 
     # Application
     language_code: str = "pt-br"

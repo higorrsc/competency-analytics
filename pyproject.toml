@@ -102,6 +102,9 @@ line-ending = "auto"
 select = ["E", "F", "I", "W", "B", "UP", "N", "SIM", "ASYNC", "RUF"]
 ignore = []
 
+[tool.ruff.lint.per-file-ignores]
+"**/migrations/*" = ["RUF012"]
+
 [tool.ruff.lint.pycodestyle]
 max-line-length = 88
 
