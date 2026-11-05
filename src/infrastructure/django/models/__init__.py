@@ -8,6 +8,9 @@ from __future__ import annotations
 
 from src.infrastructure.django.models.category import CategoryModel
 from src.infrastructure.django.models.collaborator import CollaboratorModel
+from src.infrastructure.django.models.collaborator_competency_history_view import (
+    CollaboratorCompetencyHistoryViewModel,
+)
 from src.infrastructure.django.models.competency import CompetencyModel
 from src.infrastructure.django.models.competency_group import CompetencyGroupModel
 from src.infrastructure.django.models.competency_measurement import (
@@ -20,9 +23,13 @@ from src.infrastructure.django.models.competency_requirement import (
 from src.infrastructure.django.models.evaluation import EvaluationModel
 from src.infrastructure.django.models.path_enrollment import PathEnrollmentModel
 from src.infrastructure.django.models.path_level import PathLevelModel
+from src.infrastructure.django.models.path_progression_summary_view import (
+    PathProgressionSummaryViewModel,
+)
 
 __all__ = [
     "CategoryModel",
+    "CollaboratorCompetencyHistoryViewModel",
     "CollaboratorModel",
     "CompetencyGroupModel",
     "CompetencyMeasurementModel",
@@ -32,4 +39,5 @@ __all__ = [
     "EvaluationModel",
     "PathEnrollmentModel",
     "PathLevelModel",
+    "PathProgressionSummaryViewModel",
 ]
