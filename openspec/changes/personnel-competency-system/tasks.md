@@ -166,7 +166,7 @@
 
 ## 16. Integration Testing
 
-- [ ] 16.1 Create end-to-end test: create competency catalog → create path → enroll collaborator → create evaluation → calculate gaps, and verify complete workflow succeeds
+- [x] 16.1 Create end-to-end test: create competency catalog → create path → enroll collaborator → create evaluation → calculate gaps, and verify complete workflow succeeds
 - [ ] 16.2 Create integration test for evaluation lifecycle: draft → add measurements → submit → accept, and verify immutability enforced
 - [ ] 16.3 Create integration test for contested evaluation: draft → submit → contest, and verify contestation notes required
 - [ ] 16.4 Create integration test for active path switching: enroll in path A → activate → enroll in path B → activate, and verify only B active
