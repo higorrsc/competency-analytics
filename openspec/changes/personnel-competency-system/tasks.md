@@ -124,13 +124,13 @@
 
 ## 12. Infrastructure - Database Views for Read Models
 
-- [ ] 12.1 Create SQL migration for collaborator_competency_history view with window functions and verify migration applies
-- [ ] 12.2 Create SQL migration for path_progression_summary view with aggregations and verify migration applies
-- [ ] 12.3 Implement DjangoCompetencyHistoryReadModel querying view and verify integration test returns correct historical data
-- [ ] 12.4 Implement DjangoPathProgressionReadModel querying view and verify integration test calculates correct completion percentage
-- [ ] 12.5 Add filtering by date range to history read model and verify integration test covers date filtering
-- [ ] 12.6 Verify views include only finalized evaluations (ACEITA/CONTESTADA) and integration test confirms drafts excluded
-- [ ] 12.7 Document views in migration comments explaining purpose and dependencies
+- [x] 12.1 Create SQL migration for collaborator_competency_history view with window functions and verify migration applies
+- [x] 12.2 Create SQL migration for path_progression_summary view with aggregations and verify migration applies
+- [x] 12.3 Implement DjangoCompetencyHistoryReadModel querying view and verify integration test returns correct historical data
+- [x] 12.4 Implement DjangoPathProgressionReadModel querying view and verify integration test calculates correct completion percentage
+- [x] 12.5 Add filtering by date range to history read model and verify integration test covers date filtering
+- [x] 12.6 Verify views include only finalized evaluations (ACEITA/CONTESTADA) and integration test confirms drafts excluded
+- [x] 12.7 Document views in migration comments explaining purpose and dependencies
 
 ## 13. Presentation - Django Admin
 
