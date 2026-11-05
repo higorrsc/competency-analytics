@@ -85,17 +85,17 @@
 
 ## 9. Application Layer - Use Cases
 
-- [ ] 9.1 Implement CreateCompetencyUseCase with repository injection and verify unit test with fake repository covers happy path
-- [ ] 9.2 Implement CreateCareerPathUseCase and verify unit test covers level ordering validation
-- [ ] 9.3 Implement EnrollCollaboratorInPathUseCase enforcing single active path and verify unit test with fake repository
-- [ ] 9.4 Implement CreateEvaluationUseCase creating draft evaluation and verify unit test covers collaborator validation
-- [ ] 9.5 Implement AddMeasurementToEvaluationUseCase validating draft status and verify unit test covers immutability enforcement
-- [ ] 9.6 Implement SubmitEvaluationUseCase transitioning to CONCLUÍDA and verify unit test covers measurement requirement
-- [ ] 9.7 Implement AcceptEvaluationUseCase (collaborator action) and verify unit test covers status transition
-- [ ] 9.8 Implement ContestEvaluationUseCase requiring notes and verify unit test covers notes validation
-- [ ] 9.9 Implement CalculateCompetencyGapsUseCase coordinating repositories and domain service and verify unit test with fakes
-- [ ] 9.10 Add error handling translating domain exceptions to application-level errors and verify unit tests cover error scenarios
-- [ ] 9.11 Document all use cases with docstrings explaining orchestration flow
+- [x] 9.1 Implement CreateCompetencyUseCase with repository injection and verify unit test with fake repository covers happy path
+- [x] 9.2 Implement CreateCareerPathUseCase and verify unit test covers level ordering validation
+- [x] 9.3 Implement EnrollCollaboratorInPathUseCase enforcing single active path and verify unit test with fake repository
+- [x] 9.4 Implement CreateEvaluationUseCase creating draft evaluation and verify unit test covers collaborator validation
+- [x] 9.5 Implement AddMeasurementToEvaluationUseCase validating draft status and verify unit test covers immutability enforcement
+- [x] 9.6 Implement SubmitEvaluationUseCase transitioning to CONCLUÍDA and verify unit test covers measurement requirement
+- [x] 9.7 Implement AcceptEvaluationUseCase (collaborator action) and verify unit test covers status transition
+- [x] 9.8 Implement ContestEvaluationUseCase requiring notes and verify unit test covers notes validation
+- [x] 9.9 Implement CalculateCompetencyGapsUseCase coordinating repositories and domain service and verify unit test with fakes
+- [x] 9.10 Add error handling translating domain exceptions to application-level errors and verify unit tests cover error scenarios
+- [x] 9.11 Document all use cases with docstrings explaining orchestration flow
 
 ## 10. Infrastructure - Django Models
 
