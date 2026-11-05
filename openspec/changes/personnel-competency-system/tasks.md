@@ -99,17 +99,17 @@
 
 ## 10. Infrastructure - Django Models
 
-- [ ] 10.1 Create Django models for competency hierarchy (CategoryModel, CompetencyGroupModel, CompetencyModel) and verify migrations generate
-- [ ] 10.2 Create CompetencyPathModel and PathLevelModel with ordering and verify migrations
-- [ ] 10.3 Create CompetencyRequirementModel linking PathLevel to Competency and verify migrations
-- [ ] 10.4 Create CollaboratorModel with basic fields and verify migrations
-- [ ] 10.5 Create PathEnrollmentModel with unique_together constraint and verify migrations
-- [ ] 10.6 Create EvaluationModel with status field and dates and verify migrations
-- [ ] 10.7 Create CompetencyMeasurementModel linking Evaluation to Competency and verify migrations
-- [ ] 10.8 Add database check constraint preventing modification of finalized evaluations and verify migration
-- [ ] 10.9 Add model-level save override enforcing immutability in EvaluationModel and verify integration test with database
-- [ ] 10.10 Add __str__ methods and Meta ordering to all models and verify Django admin display
-- [ ] 10.11 Run migrations on test database and verify schema created successfully
+- [x] 10.1 Create Django models for competency hierarchy (CategoryModel, CompetencyGroupModel, CompetencyModel) and verify migrations generate
+- [x] 10.2 Create CompetencyPathModel and PathLevelModel with ordering and verify migrations
+- [x] 10.3 Create CompetencyRequirementModel linking PathLevel to Competency and verify migrations
+- [x] 10.4 Create CollaboratorModel with basic fields and verify migrations
+- [x] 10.5 Create PathEnrollmentModel with unique_together constraint and verify migrations
+- [x] 10.6 Create EvaluationModel with status field and dates and verify migrations
+- [x] 10.7 Create CompetencyMeasurementModel linking Evaluation to Competency and verify migrations
+- [x] 10.8 Add database check constraint preventing modification of finalized evaluations and verify migration
+- [x] 10.9 Add model-level save override enforcing immutability in EvaluationModel and verify integration test with database
+- [x] 10.10 Add __str__ methods and Meta ordering to all models and verify Django admin display
+- [x] 10.11 Run migrations on test database and verify schema created successfully
 
 ## 11. Infrastructure - Repository Implementations
 
