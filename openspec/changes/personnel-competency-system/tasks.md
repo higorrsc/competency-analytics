@@ -192,8 +192,8 @@
 ## 18. System Verification
 
 - [x] 18.1 Start development server and verify all endpoints accessible
-- [ ] 18.2 Access Django admin and verify all models manageable
-- [ ] 18.3 Create sample data via admin and verify data persists correctly
+- [x] 18.2 Access Django admin and verify all models manageable
+- [x] 18.3 Create sample data via admin and verify data persists correctly
 - [ ] 18.4 Execute complete user workflow via API and verify responses match specs
 - [ ] 18.5 Verify database views return correct data matching manual queries
 - [ ] 18.6 Run performance test on gap analysis with large path (30+ requirements) and verify acceptable response time
