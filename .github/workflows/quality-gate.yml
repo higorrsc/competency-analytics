@@ -34,7 +34,7 @@ jobs:
         run: uv python install 3.15
 
       - name: Install dependencies
-        run: uv sync --frozen
+        run: uv sync
 
       - name: Check code formatting (Ruff)
         run: uv run ruff format --check .
