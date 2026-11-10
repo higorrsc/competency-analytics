@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from src.application.dto.read_model_dtos import (
+from src.application.dto.read_model import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )

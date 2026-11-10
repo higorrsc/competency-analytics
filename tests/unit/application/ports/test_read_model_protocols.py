@@ -3,7 +3,7 @@
 from datetime import UTC, date, datetime
 from uuid import uuid4
 
-from src.application.dto.read_model_dtos import (
+from src.application.dto.read_model import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )

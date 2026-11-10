@@ -1,4 +1,4 @@
-"""Pydantic DTOs produced by CQRS read models backed by database views."""
+"""Output response DTOs produced by CQRS read models."""
 
 from __future__ import annotations
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from src.application.dto.read_model_dtos import CompetencyHistoryEntryDTO
+from src.application.dto.read_model import CompetencyHistoryEntryDTO
 from src.application.ports.read_models import CompetencyHistoryReadModel
 from src.domain.value_objects.collaborator_id import CollaboratorId
 from src.domain.value_objects.competency_id import CompetencyId

@@ -3,7 +3,7 @@
 from datetime import date
 from typing import Protocol, runtime_checkable
 
-from src.application.dto.read_model_dtos import (
+from src.application.dto.read_model import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )

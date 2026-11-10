@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.read_model_dtos import PathProgressionSummaryDTO
+from src.application.dto.read_model import PathProgressionSummaryDTO
 from src.domain.value_objects.collaborator_id import CollaboratorId
 from src.domain.value_objects.path_id import PathId
 from src.infrastructure.django.models.path_progression_summary_view import (

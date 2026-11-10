@@ -6,7 +6,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from src.application.dto.read_model_dtos import (
+from src.application.dto.read_model import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import UTC, date, datetime, time
 
-from src.application.dto.read_model_dtos import CompetencyHistoryEntryDTO
+from src.application.dto.read_model import CompetencyHistoryEntryDTO
 from src.domain.value_objects.collaborator_id import CollaboratorId
 from src.domain.value_objects.competency_id import CompetencyId
 from src.domain.value_objects.evaluation_status import EvaluationStatus
