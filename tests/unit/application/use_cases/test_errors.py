@@ -4,10 +4,10 @@ import inspect
 
 import pytest
 
-from src.application.use_cases.collaborator_use_cases import (
+from src.application.use_cases.collaborator.command import (
     EnrollCollaboratorInPathUseCase,
 )
-from src.application.use_cases.competency_use_cases import (
+from src.application.use_cases.competency.command import (
     CreateCompetencyUseCase,
 )
 from src.application.use_cases.errors import (
@@ -16,17 +16,17 @@ from src.application.use_cases.errors import (
     NotFoundError,
     ValidationError,
 )
-from src.application.use_cases.evaluation_use_cases import (
+from src.application.use_cases.evaluation.command import (
     AcceptEvaluationUseCase,
     AddMeasurementToEvaluationUseCase,
     ContestEvaluationUseCase,
     CreateEvaluationUseCase,
     SubmitEvaluationUseCase,
 )
-from src.application.use_cases.gap_analysis_use_cases import (
+from src.application.use_cases.gap_analysis.query import (
     CalculateCompetencyGapsUseCase,
 )
-from src.application.use_cases.path_use_cases import CreateCareerPathUseCase
+from src.application.use_cases.path.command import CreateCareerPathUseCase
 
 ALL_USE_CASES = [
     AcceptEvaluationUseCase,

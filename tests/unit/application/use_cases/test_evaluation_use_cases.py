@@ -13,14 +13,16 @@ from src.application.use_cases.errors import (
     NotFoundError,
     ValidationError,
 )
-from src.application.use_cases.evaluation_use_cases import (
+from src.application.use_cases.evaluation.command import (
     AcceptEvaluationUseCase,
     AddMeasurementToEvaluationUseCase,
     ContestEvaluationUseCase,
     CreateEvaluationUseCase,
+    SubmitEvaluationUseCase,
+)
+from src.application.use_cases.evaluation.query import (
     GetEvaluationUseCase,
     ListEvaluationsUseCase,
-    SubmitEvaluationUseCase,
 )
 from src.domain.entities.collaborator import Collaborator
 from src.domain.entities.competency import Competency

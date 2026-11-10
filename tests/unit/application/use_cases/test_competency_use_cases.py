@@ -3,9 +3,11 @@
 import pytest
 
 from src.application.dto.competency_dtos import CompetencyCreateDTO
-from src.application.use_cases.competency_use_cases import (
+from src.application.use_cases.competency.command import (
     CreateCompetencyUseCase,
     DeleteCompetencyUseCase,
+)
+from src.application.use_cases.competency.query import (
     GetCompetencyUseCase,
     ListCompetenciesUseCase,
 )

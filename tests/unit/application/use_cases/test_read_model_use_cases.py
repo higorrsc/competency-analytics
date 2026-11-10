@@ -8,7 +8,7 @@ from src.application.dto.read_model_dtos import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )
-from src.application.use_cases.read_model_use_cases import (
+from src.application.use_cases.read_model.query import (
     GetCompetencyHistoryUseCase,
     GetPathProgressionUseCase,
 )

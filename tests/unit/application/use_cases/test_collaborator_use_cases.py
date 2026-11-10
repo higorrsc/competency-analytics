@@ -6,10 +6,12 @@ from src.application.dto.collaborator_dtos import (
     CollaboratorCreateDTO,
     EnrollmentCreateDTO,
 )
-from src.application.use_cases.collaborator_use_cases import (
+from src.application.use_cases.collaborator.command import (
     ActivateCollaboratorPathUseCase,
     CreateCollaboratorUseCase,
     EnrollCollaboratorInPathUseCase,
+)
+from src.application.use_cases.collaborator.query import (
     GetCollaboratorUseCase,
     ListCollaboratorsUseCase,
 )

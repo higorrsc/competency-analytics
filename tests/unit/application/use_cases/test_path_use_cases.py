@@ -12,8 +12,10 @@ from src.application.use_cases.errors import (
     NotFoundError,
     ValidationError,
 )
-from src.application.use_cases.path_use_cases import (
+from src.application.use_cases.path.command import (
     CreateCareerPathUseCase,
+)
+from src.application.use_cases.path.query import (
     GetCareerPathUseCase,
     ListCareerPathsUseCase,
 )

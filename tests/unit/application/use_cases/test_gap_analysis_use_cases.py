@@ -6,7 +6,7 @@ import pytest
 
 from src.application.dto.gap_analysis_dtos import GapAnalysisRequestDTO
 from src.application.use_cases.errors import NotFoundError
-from src.application.use_cases.gap_analysis_use_cases import (
+from src.application.use_cases.gap_analysis.query import (
     CalculateCompetencyGapsUseCase,
 )
 from src.domain.entities.collaborator import Collaborator
