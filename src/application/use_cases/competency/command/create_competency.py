@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.competency_dtos import (
+from src.application.dto.competency import (
     CompetencyCreateDTO,
     CompetencyResponseDTO,
 )

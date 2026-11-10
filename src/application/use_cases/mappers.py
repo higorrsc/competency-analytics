@@ -9,7 +9,7 @@ from src.application.dto.collaborator import (
     CollaboratorResponseDTO,
     EnrollmentDTO,
 )
-from src.application.dto.competency_dtos import CompetencyResponseDTO
+from src.application.dto.competency import CompetencyResponseDTO
 from src.application.dto.evaluation_dtos import (
     EvaluationResponseDTO,
     MeasurementDTO,

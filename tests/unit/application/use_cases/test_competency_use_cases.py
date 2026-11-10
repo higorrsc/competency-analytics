@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.application.dto.competency_dtos import CompetencyCreateDTO
+from src.application.dto.competency import CompetencyCreateDTO
 from src.application.use_cases.competency.command import (
     CreateCompetencyUseCase,
     DeleteCompetencyUseCase,

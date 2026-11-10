@@ -1,4 +1,4 @@
-"""Pydantic DTOs for the competency catalog application boundary."""
+"""Input request DTOs for the competency catalog application boundary."""
 
 from uuid import UUID
 
@@ -83,16 +83,3 @@ class CompetencyCreateDTO(BaseModel):
             if not description.strip():
                 raise ValueError(f"description for level {level} must not be empty")
         return value
-
-
-class CompetencyResponseDTO(BaseModel):
-    """Output contract exposing a stored competency."""
-
-    model_config = ConfigDict(frozen=True, from_attributes=True)
-
-    id: UUID
-    name: str
-    description: str
-    category_id: UUID
-    group_id: UUID
-    level_descriptions: dict[int, str]

@@ -6,7 +6,7 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from src.application.dto.competency_dtos import (
+from src.application.dto.competency import (
     CompetencyCreateDTO,
     CompetencyResponseDTO,
 )

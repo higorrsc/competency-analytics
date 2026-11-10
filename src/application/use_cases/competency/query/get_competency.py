@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.competency_dtos import CompetencyResponseDTO
+from src.application.dto.competency import CompetencyResponseDTO
 from src.application.use_cases.errors import NotFoundError
 from src.application.use_cases.mappers import map_competency
 from src.domain.repositories.competency_repository import CompetencyRepository
