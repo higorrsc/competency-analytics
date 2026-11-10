@@ -14,7 +14,7 @@ from src.application.dto.evaluation import (
     EvaluationResponseDTO,
     MeasurementDTO,
 )
-from src.application.dto.gap_analysis_dtos import (
+from src.application.dto.gap_analysis import (
     CompetencyGapDTO,
     ProgressionEligibilityDTO,
 )

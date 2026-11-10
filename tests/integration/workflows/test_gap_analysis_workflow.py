@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from src.application.dto.gap_analysis_dtos import GapAnalysisRequestDTO
+from src.application.dto.gap_analysis import GapAnalysisRequestDTO
 from src.domain.value_objects.requirement_weight import RequirementWeight
 from src.infrastructure.django.models.category import CategoryModel
 from src.infrastructure.django.models.collaborator import CollaboratorModel

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.gap_analysis_dtos import (
+from src.application.dto.gap_analysis import (
     GapAnalysisRequestDTO,
     GapAnalysisResponseDTO,
 )

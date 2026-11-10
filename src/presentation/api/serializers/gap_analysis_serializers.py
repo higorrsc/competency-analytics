@@ -7,7 +7,7 @@ from uuid import UUID
 
 from rest_framework import serializers
 
-from src.application.dto.gap_analysis_dtos import (
+from src.application.dto.gap_analysis import (
     CompetencyGapDTO,
     GapAnalysisRequestDTO,
     GapAnalysisResponseDTO,

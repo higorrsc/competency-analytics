@@ -5,7 +5,7 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from src.application.dto.gap_analysis_dtos import (
+from src.application.dto.gap_analysis import (
     CompetencyGapDTO,
     GapAnalysisRequestDTO,
     GapAnalysisResponseDTO,
