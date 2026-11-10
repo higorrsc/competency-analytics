@@ -6,7 +6,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from src.application.dto.collaborator_dtos import (
+from src.application.dto.collaborator import (
     CollaboratorCreateDTO,
     CollaboratorResponseDTO,
     EnrollmentCreateDTO,

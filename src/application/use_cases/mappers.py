@@ -5,7 +5,7 @@ in DTOs. These mappers centralize attribute conversion, including identifier
 value objects mapped to their bare UUID values.
 """
 
-from src.application.dto.collaborator_dtos import (
+from src.application.dto.collaborator import (
     CollaboratorResponseDTO,
     EnrollmentDTO,
 )

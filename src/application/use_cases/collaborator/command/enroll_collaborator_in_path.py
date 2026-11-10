@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from src.application.dto.collaborator_dtos import (
+from src.application.dto.collaborator import (
     CollaboratorResponseDTO,
     EnrollmentCreateDTO,
 )

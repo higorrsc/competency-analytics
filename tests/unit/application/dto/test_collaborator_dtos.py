@@ -7,7 +7,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from src.application.dto.collaborator_dtos import (
+from src.application.dto.collaborator import (
     CollaboratorCreateDTO,
     CollaboratorResponseDTO,
     EnrollmentCreateDTO,

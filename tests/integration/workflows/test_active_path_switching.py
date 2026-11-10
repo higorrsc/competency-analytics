@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.application.dto.collaborator_dtos import EnrollmentCreateDTO
+from src.application.dto.collaborator import EnrollmentCreateDTO
 from src.domain.value_objects.collaborator_id import CollaboratorId
 from src.domain.value_objects.path_id import PathId
 from src.infrastructure.django.models.collaborator import CollaboratorModel

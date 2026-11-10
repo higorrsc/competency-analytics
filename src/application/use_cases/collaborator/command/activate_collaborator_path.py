@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.collaborator_dtos import CollaboratorResponseDTO
+from src.application.dto.collaborator import CollaboratorResponseDTO
 from src.application.use_cases.errors import NotFoundError
 from src.application.use_cases.mappers import map_collaborator
 from src.domain.exceptions.collaborator_errors import EnrollmentNotFoundError

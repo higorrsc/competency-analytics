@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.application.dto.collaborator_dtos import (
+from src.application.dto.collaborator import (
     CollaboratorCreateDTO,
     EnrollmentCreateDTO,
 )
