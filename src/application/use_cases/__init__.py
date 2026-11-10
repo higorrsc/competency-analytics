@@ -7,7 +7,7 @@ from src.application.use_cases.collaborator import (
     GetCollaboratorUseCase,
     ListCollaboratorsUseCase,
 )
-from src.application.use_cases.competency_use_cases import (
+from src.application.use_cases.competency import (
     CreateCompetencyUseCase,
     DeleteCompetencyUseCase,
     GetCompetencyUseCase,
