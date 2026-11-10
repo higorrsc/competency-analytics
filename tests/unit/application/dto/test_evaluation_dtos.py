@@ -7,7 +7,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from src.application.dto.evaluation_dtos import (
+from src.application.dto.evaluation import (
     EvaluationCreateDTO,
     EvaluationResponseDTO,
     MeasurementCreateDTO,

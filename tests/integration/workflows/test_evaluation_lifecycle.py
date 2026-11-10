@@ -12,7 +12,7 @@ from datetime import UTC, datetime
 import pytest
 from django.db import IntegrityError
 
-from src.application.dto.evaluation_dtos import (
+from src.application.dto.evaluation import (
     EvaluationCreateDTO,
     MeasurementCreateDTO,
 )

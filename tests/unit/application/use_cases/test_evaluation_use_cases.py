@@ -4,7 +4,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from src.application.dto.evaluation_dtos import (
+from src.application.dto.evaluation import (
     EvaluationCreateDTO,
     MeasurementCreateDTO,
 )

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from src.application.dto.evaluation_dtos import EvaluationResponseDTO
+from src.application.dto.evaluation import EvaluationResponseDTO
 from src.application.use_cases.errors import ConflictError
 from src.application.use_cases.evaluation._helpers import load_evaluation
 from src.application.use_cases.mappers import map_evaluation

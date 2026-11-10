@@ -7,7 +7,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from src.application.dto.evaluation_dtos import (
+from src.application.dto.evaluation import (
     EvaluationCreateDTO,
     EvaluationResponseDTO,
     MeasurementCreateDTO,

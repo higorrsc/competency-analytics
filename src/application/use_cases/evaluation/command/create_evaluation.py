@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from src.application.dto.evaluation_dtos import (
+from src.application.dto.evaluation import (
     EvaluationCreateDTO,
     EvaluationResponseDTO,
 )
