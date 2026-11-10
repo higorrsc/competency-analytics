@@ -25,7 +25,7 @@ from src.application.use_cases.evaluation_use_cases import (
 from src.application.use_cases.gap_analysis_use_cases import (
     CalculateCompetencyGapsUseCase,
 )
-from src.application.use_cases.path_use_cases import (
+from src.application.use_cases.path import (
     CreateCareerPathUseCase,
     GetCareerPathUseCase,
     ListCareerPathsUseCase,
