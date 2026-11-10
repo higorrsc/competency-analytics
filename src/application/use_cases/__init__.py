@@ -30,7 +30,7 @@ from src.application.use_cases.path import (
     GetCareerPathUseCase,
     ListCareerPathsUseCase,
 )
-from src.application.use_cases.read_model_use_cases import (
+from src.application.use_cases.read_model import (
     GetCompetencyHistoryUseCase,
     GetPathProgressionUseCase,
 )
