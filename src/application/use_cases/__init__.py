@@ -13,7 +13,7 @@ from src.application.use_cases.competency import (
     GetCompetencyUseCase,
     ListCompetenciesUseCase,
 )
-from src.application.use_cases.evaluation_use_cases import (
+from src.application.use_cases.evaluation import (
     AcceptEvaluationUseCase,
     AddMeasurementToEvaluationUseCase,
     ContestEvaluationUseCase,
