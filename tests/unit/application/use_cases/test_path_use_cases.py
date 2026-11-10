@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.application.dto.path_dtos import (
+from src.application.dto.path import (
     LevelCreateDTO,
     PathCreateDTO,
     RequirementCreateDTO,

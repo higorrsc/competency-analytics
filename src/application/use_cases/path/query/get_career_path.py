@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.path_dtos import PathResponseDTO
+from src.application.dto.path import PathResponseDTO
 from src.application.use_cases.errors import NotFoundError
 from src.application.use_cases.mappers import map_path
 from src.domain.repositories.path_repository import PathRepository

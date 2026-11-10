@@ -18,7 +18,7 @@ from src.application.dto.gap_analysis import (
     CompetencyGapDTO,
     ProgressionEligibilityDTO,
 )
-from src.application.dto.path_dtos import (
+from src.application.dto.path import (
     LevelResponseDTO,
     PathResponseDTO,
     RequirementResponseDTO,

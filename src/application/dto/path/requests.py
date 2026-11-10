@@ -1,4 +1,4 @@
-"""Pydantic DTOs for the career path application boundary."""
+"""Input request DTOs for the career path application boundary."""
 
 from uuid import UUID
 
@@ -14,16 +14,6 @@ class RequirementCreateDTO(BaseModel):
 
     competency_id: UUID
     minimum_level: int = Field(ge=1, le=5)
-    weight: RequirementWeight
-
-
-class RequirementResponseDTO(BaseModel):
-    """Output contract exposing a stored competency requirement."""
-
-    model_config = ConfigDict(frozen=True, from_attributes=True)
-
-    competency_id: UUID
-    minimum_level: int
     weight: RequirementWeight
 
 
@@ -57,17 +47,6 @@ class LevelCreateDTO(BaseModel):
         if not stripped:
             raise ValueError("name must not be empty")
         return stripped
-
-
-class LevelResponseDTO(BaseModel):
-    """Output contract exposing a stored career path level."""
-
-    model_config = ConfigDict(frozen=True, from_attributes=True)
-
-    id: UUID
-    name: str
-    order: int
-    requirements: list[RequirementResponseDTO]
 
 
 class PathCreateDTO(BaseModel):
@@ -118,14 +97,3 @@ class PathCreateDTO(BaseModel):
         if not stripped:
             raise ValueError("description must not be empty")
         return stripped
-
-
-class PathResponseDTO(BaseModel):
-    """Output contract exposing a stored career path."""
-
-    model_config = ConfigDict(frozen=True, from_attributes=True)
-
-    id: UUID
-    name: str
-    description: str
-    levels: list[LevelResponseDTO]

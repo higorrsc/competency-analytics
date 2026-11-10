@@ -6,7 +6,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from src.application.dto.path_dtos import (
+from src.application.dto.path import (
     LevelCreateDTO,
     LevelResponseDTO,
     PathCreateDTO,

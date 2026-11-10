@@ -6,7 +6,7 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from src.application.dto.path_dtos import (
+from src.application.dto.path import (
     LevelCreateDTO,
     LevelResponseDTO,
     PathCreateDTO,

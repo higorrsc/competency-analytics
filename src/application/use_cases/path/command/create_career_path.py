@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from src.application.dto.path_dtos import (
+from src.application.dto.path import (
     LevelCreateDTO,
     PathCreateDTO,
     PathResponseDTO,
