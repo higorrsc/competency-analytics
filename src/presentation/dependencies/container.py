@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from src.application.ports.read_models import (
+from src.application.ports import (
     CompetencyHistoryReadModel,
     PathProgressionReadModel,
 )

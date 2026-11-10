@@ -6,7 +6,7 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from src.application.ports.read_models import PathProgressionReadModel
+from src.application.ports import PathProgressionReadModel
 from src.domain.entities.collaborator import Collaborator
 from src.domain.entities.competency import Competency
 from src.domain.entities.competency_measurement import CompetencyMeasurement

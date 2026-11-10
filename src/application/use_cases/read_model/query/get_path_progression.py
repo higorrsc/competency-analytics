@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from src.application.dto.read_model import PathProgressionSummaryDTO
-from src.application.ports.read_models import PathProgressionReadModel
+from src.application.ports import PathProgressionReadModel
 from src.domain.value_objects.collaborator_id import CollaboratorId
 from src.domain.value_objects.path_id import PathId
 

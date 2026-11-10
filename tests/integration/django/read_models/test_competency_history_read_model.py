@@ -6,7 +6,7 @@ from datetime import UTC, date, datetime, timedelta
 
 import pytest
 
-from src.application.ports.read_models import CompetencyHistoryReadModel
+from src.application.ports import CompetencyHistoryReadModel
 from src.domain.entities.collaborator import Collaborator
 from src.domain.entities.competency import Competency
 from src.domain.entities.competency_measurement import CompetencyMeasurement

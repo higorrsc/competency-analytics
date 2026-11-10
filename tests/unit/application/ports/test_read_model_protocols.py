@@ -7,7 +7,7 @@ from src.application.dto.read_model import (
     CompetencyHistoryEntryDTO,
     PathProgressionSummaryDTO,
 )
-from src.application.ports.read_models import (
+from src.application.ports import (
     CompetencyHistoryReadModel,
     PathProgressionReadModel,
 )
