@@ -22,7 +22,7 @@ from src.application.use_cases.evaluation import (
     ListEvaluationsUseCase,
     SubmitEvaluationUseCase,
 )
-from src.application.use_cases.gap_analysis_use_cases import (
+from src.application.use_cases.gap_analysis import (
     CalculateCompetencyGapsUseCase,
 )
 from src.application.use_cases.path import (
