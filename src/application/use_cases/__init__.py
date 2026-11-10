@@ -1,6 +1,6 @@
 """Application use cases orchestrated around domain behavior."""
 
-from src.application.use_cases.collaborator_use_cases import (
+from src.application.use_cases.collaborator import (
     ActivateCollaboratorPathUseCase,
     CreateCollaboratorUseCase,
     EnrollCollaboratorInPathUseCase,
